@@ -1,6 +1,6 @@
 package com.hlj.arith.domo0002MissingNumberInArray;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.BitSet;
