@@ -2,7 +2,7 @@ package com.hlj.arith.domo0001KillPerson;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
