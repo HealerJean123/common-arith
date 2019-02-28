@@ -1,6 +1,5 @@
 package com.hlj.arith.domo0001;
 
-import org.junit.jupiter.api.Test;
 
 /**
 作者：HealerJean

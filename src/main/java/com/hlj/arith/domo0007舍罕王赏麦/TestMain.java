@@ -24,9 +24,9 @@ public class TestMain {
 
 
     public static void main(String[] args) {
-        double sum=0;//仔细 观察下面会发现第一个没有加进去
+        double sum=1;//仔细 观察下面会发现第一个没有加进去
         double temp=1;
-        for(int i=1;i<=5;i++)
+        for(int i=1;i<3;i++)
         {
             temp=temp*2;
             sum=sum+temp;
@@ -34,7 +34,7 @@ public class TestMain {
         System.out.println(sum);       //迭代法
 
 
-        System.out.println(f(2));  //递归算法
+        System.out.println(f(64));  //递归算法
     }
     public static double f(double n) {
 

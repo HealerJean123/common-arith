@@ -1,6 +1,6 @@
 package com.hlj.arith.domo0004五家共井;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
 作者：HealerJean

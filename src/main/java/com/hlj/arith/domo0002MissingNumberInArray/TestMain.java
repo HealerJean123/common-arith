@@ -39,19 +39,22 @@ public class TestMain {
      * @param count
      */
     private  void printMissingNumber(int[] numbers, int count) {
-        int missingCount = count - numbers.length; //一共丢失了多少位
-//        Java2 版本允许指定它的初始大小，即比特，它可以容纳的数量。所有位初始化为零
-        BitSet bitSet = new BitSet(count); //一共有多少数字,
-
-        for (int number : numbers) {
-            bitSet.set(number - 1); //设置由index指定的位
-        }
 
         System.out.println("一共有"+count+"个数据：目前数组为"+Arrays.toString(numbers));
 
-        int lastMissingIndex = 0;
+        int missingCount = count - numbers.length; //一共丢失了多少位
+//      Java2 版本允许指定它的初始大小，即比特，它可以容纳的数量。所有位初始化为零
+        BitSet bitSet = new BitSet(count); //一共有多少数字,
+
+        for (int number : numbers) {
+            bitSet.set(number-1); //将指定索引处的位设置为 true。
+        }
+        System.out.println("bitSet长度"+bitSet.toString());
+
+
+        int lastMissingIndex = 0; //索引从0开始
         for (int i = 0; i < missingCount; i++) {
-            //返回下个清零位的索引，（即，下一个零位），从由startIndex指定的索引开始
+            //返回第一个设置为 false 的位的索引，这发生在指定的   起始索引或之后的索引上。
             lastMissingIndex = bitSet.nextClearBit(lastMissingIndex);
             System.out.println(++lastMissingIndex);
         }

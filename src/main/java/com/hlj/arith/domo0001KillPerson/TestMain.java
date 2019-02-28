@@ -34,7 +34,7 @@ public class TestMain {
         prinnt(persons);
 
         //2、开始杀人,中间使用了递归
-        killPerson(n,persons);
+        killPersons(persons);
 
     }
 
@@ -53,22 +53,21 @@ public class TestMain {
 
     /**
      * 杀人之后重新排序
-     * @param n
-     * @param persons
+     * @param
+     * @param personList
      * @return
      */
-    public List<Person> killPerson(Integer n, List<Person> persons){
+    public List<Person> killPersons(List<Person> personList){
 
-        List<Person>  personEnd =  persons.subList(7, persons.size()); //从第8为开始取数据
-        List<Person> personStart = persons.subList(0, 6); //从第一位开始取数据
+        List<Person>  personEnd =  personList.subList(7, personList.size()); //从第8为开始取数据
+        List<Person> personStart = personList.subList(0, 6); //从第一位开始取数据
 
         personEnd.addAll(personStart);//将前面的加到后面去
         prinnt(personEnd);
         if(personEnd.size()>6){ //表示索引最小也得是7
-            killPerson(n, personEnd);
+            killPersons(personEnd);
         }
         return  personEnd ;
-
     }
 
     public void prinnt(List<Person> person){

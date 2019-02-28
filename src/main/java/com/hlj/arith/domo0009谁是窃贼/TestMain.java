@@ -1,6 +1,7 @@
 package com.hlj.arith.domo0009谁是窃贼;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 
 /**
 作者：HealerJean
@@ -39,7 +40,7 @@ public class TestMain {
                                  if(D==0){
                                         sum = sum +1 ;
                                  }
-                                 if(sum==3){
+                                 if(sum==3){ //三人说真话
                                      if(A==0)
                                          System.out.println("A不是小偷\n");
                                      else
