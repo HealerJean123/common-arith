@@ -19,7 +19,7 @@ public class 堆排序 {
     }
 
     public  void sort(int[] a) {
-        // 循环建立初始堆,若父节点索引为i，那么左节点的索引为i*2+1，即左节点为a.length时，其父节点应当小于a.length/2
+        // 循环建立初始堆,若父节点索引为i，那么左节点的索引为 i*2+1，即左节点为a.length时，其父节点应当小于a.length/2
         for (int i = a.length / 2; i >= 0; i--) {// 遍历存在子节点的父节点
             adjustHeap(a, i, a.length - 1);
         }
