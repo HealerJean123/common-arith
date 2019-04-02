@@ -28,16 +28,16 @@ public class TestMain {
                     for(D = 0 ;D<=1;D++){
                             if(A+B+C+D==1){//一人是真话
                                  int sum = 0 ;
-                                 if(A==0){
+                                 if(A==0){ //A不是小偷
                                      sum = sum +1 ;
                                  }
-                                 if(C==1){
+                                 if(C==1){ //C是小偷
                                         sum = sum +1 ;
                                     }
-                                 if(D==1){
+                                 if(D==1){ //D是小偷
                                         sum = sum +1 ;
                                  }
-                                 if(D==0){
+                                 if(D==0){ //D不是小偷
                                         sum = sum +1 ;
                                  }
                                  if(sum==3){ //三人说真话
