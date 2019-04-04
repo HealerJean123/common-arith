@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @Author HealerJean
  * @Date 2019/3/18  下午10:40.
  */
-public class D01数组中找到最大的数据 {
+public class D01两个有序数组合并成同一个 {
 
     int a []  = {7,6,5,4,3,2,1,0} ;
     int b []  = {8,5,3,2} ;
@@ -21,7 +21,7 @@ public class D01数组中找到最大的数据 {
         boolean isEquals = false ;
         while ( i < a.length && j < b.length ){ //保证两个数组同时遍历
             if(a[i]>b[j]){
-                //防止重复赋值
+                //防止重复赋值 //相当于是和上一个进行比较
                 if(n>0 && c[n-1] ==a[i]){
                     i++ ;
                     continue;

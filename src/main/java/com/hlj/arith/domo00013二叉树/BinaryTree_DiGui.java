@@ -102,16 +102,16 @@ public class BinaryTree_DiGui {
 
 
 
-    // 非递归 //先序遍历
+    // 非递归 //先序遍历 跟左右
     public  static  void preStack(Node node) {
         Stack<Node> stack = new Stack<Node>();
 
         while (node != null || !stack.isEmpty()) {  //将所有左孩子压栈
             if (node != null) {   //压栈之前先访问
-                printNode(node);
-                stack.push(node); //先进后出 将 根节点放入 栈中
+                printNode(node); //先打印跟节点（跟左右）
+                stack.push(node); //先进后出 将 根节点放入 栈中（为了将来取出它的右子树）
                 node = node.getLeftNode(); //取出它的左子树
-            } else { //当上门的左子树结束之后，
+            } else { //当上门的左子树结束之后，才开始打印右子树
                 node = stack.pop();
                 node = node.getRightNode();
             }
@@ -128,15 +128,12 @@ public class BinaryTree_DiGui {
 
 
 
-
-
-
-    // 非递归 中序遍历
+    // 非递归 中序遍历 左跟右
     public  void inStack(Node node) {
         Stack<Node> stack = new Stack<Node>();
         while (node != null || !stack.isEmpty()) {
             while (node != null) {//添加到队列中
-                stack.push(node);//先进后出
+                stack.push(node);//先进后出 （为了方便先取出左子树）
                 node = node.getLeftNode();
             }
             //消化队列中的数据
@@ -219,13 +216,11 @@ public class BinaryTree_DiGui {
 
 
 
-
-
     @Test
     public void  leftToRigit(){
         System.out.println("\n层序遍历 从上到下，从左到右");
         Node root = init();
-        rightToLeft(root);
+        leftToRigit(root);
         System.out.println("");
     }
 
