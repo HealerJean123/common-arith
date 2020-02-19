@@ -5,13 +5,6 @@ import org.junit.Test;
 /**
  * @author HealerJean
  * @ClassName Z03_交叉队列
- * @date 2020/1/20  16:58.
- * @Description
- */
-
-/**
- * @author HealerJean
- * @ClassName Z03_交叉队列
  * @Date 2020/1/20  17:21.
  * @Description
  */

@@ -59,8 +59,8 @@ public class Z02_2_挖金矿_动态规划 {
                     int a = preResults[j-1] ;
                     int b ;
                     //自下而上，存在一种情况，挖了当前的矿，剩下的不足以挖别的矿 j-p[j] = 剩余人数
-                    if (j - p[i] -1 < 0 ){
-                        b = 0 +  g[i];
+                    if (j - p[i]  < 1 ){
+                        b =  g[i];
                     }else {
                         b = preResults[j - p[i] -1] +  g[i] ;
                     }
