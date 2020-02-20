@@ -5,12 +5,6 @@ import org.junit.Test;
 
 import java.util.Stack;
 
-/**
- * @author HealerJean
- * @ClassName D1_先序遍历
- * @date 2020/2/18  15:01.
- * @Description
- */
 public class D1_先序遍历 {
 
     @Test

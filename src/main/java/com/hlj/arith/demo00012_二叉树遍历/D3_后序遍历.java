@@ -3,12 +3,6 @@ package com.hlj.arith.demo00012_二叉树遍历;
 import lombok.Data;
 import org.junit.Test;
 
-/**
- * @author HealerJean
- * @ClassName D3_后序遍历
- * @date 2020/2/18  15:01.
- * @Description
- */
 public class D3_后序遍历 {
 
     @Test

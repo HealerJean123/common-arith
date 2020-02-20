@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+作者：HealerJean
 题目：
     给定一个根目录，要求遍历其中的文件及子文件夹，返回所有后缀是.txt的文件集合
 要求：

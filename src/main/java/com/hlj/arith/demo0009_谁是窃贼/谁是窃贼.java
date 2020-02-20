@@ -4,6 +4,7 @@ package com.hlj.arith.demo0009_谁是窃贼;
 import org.junit.Test;
 
 /**
+作者：HealerJean
 题目：谁是窃贼
     警察局抓住了A、B、C、D四名盗窃嫌疑犯，其中只有一人是小偷。在审问时，
     A说：“我不是小偷”；

@@ -6,12 +6,6 @@ import org.junit.Test;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * @author HealerJean
- * @ClassName D3_后序遍历
- * @date 2020/2/18  15:01.
- * @Description
- */
 public class D4_层序遍历 {
 
 

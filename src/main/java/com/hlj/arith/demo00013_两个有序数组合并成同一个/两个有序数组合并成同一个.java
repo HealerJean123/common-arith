@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 
 /**
+作者：HealerJean
 题目：两个有序数组合并成一个数组
     数组A (9,8,7,6,5,4,2,1)
     数组B (8,5,4,3,4,6)

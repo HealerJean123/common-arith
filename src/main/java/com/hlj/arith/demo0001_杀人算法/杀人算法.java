@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+作者：HealerJean
 题目：杀人算法
   把犯人围城一圈，每次杀掉第七个，又从第八个开始杀掉第七个，直到剩下最后一个
 解题思路：
