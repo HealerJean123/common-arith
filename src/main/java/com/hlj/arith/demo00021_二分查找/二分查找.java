@@ -19,7 +19,7 @@ public class 二分查找 {
 
     public int method(int[] a, int x) {
         int low = 0;
-        int high = a.length - 1;
+        int high = a.length ;
         int mid;
         //最后一定的是low和hig重合和x得坐标相等
         while (low <= high) {
