@@ -8,6 +8,12 @@ import org.junit.Test;
  * @date 2020/2/20  13:45.
  * @Description
  */
+
+/**
+ 作者：HealerJean
+ 题目：寻找两个有序数组的中位数
+ 解题思路：看博客，有图文解释
+ */
 public class 寻找两个有序数组的中位数 {
 
 
