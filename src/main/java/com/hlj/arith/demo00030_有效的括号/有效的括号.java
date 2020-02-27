@@ -37,31 +37,50 @@ public class 有效的括号 {
 
     public boolean isValid(String str) {
         Map<Character, Character> map = new HashMap();
-        map.put('(',')');
+        map.put('(', ')');
         map.put('[', ']');
         map.put('{', '}');
-
         Stack<Character> stack = new Stack();
         for (int i = 0; i < str.length(); i++) {
-            Character ele =  str.charAt(i) ;
-          //如果属于 map的key值则直接放入栈中
-          if (map.containsKey(str.charAt(i))){
-              stack.push(ele);
-          }else {
-              //如果不属于 map的key，还能进来肯定有问题
-              if (stack.isEmpty()){
-                  return false ;
-              }else if (map.get(stack.peek()).equals(ele)){
-                  stack.pop();
-              }else {
-                  return false;
-              }
-          }
+            Character ele = str.charAt(i);
+            //如果属于 map的key值则直接放入栈中
+            if (map.containsKey(str.charAt(i))) {
+                stack.push(ele);
+            } else {
+                //如果不属于 map的key，还能进来肯定有问题
+                if (stack.isEmpty()) {
+                    return false;
+                } else if (map.get(stack.peek()).equals(ele)) {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            }
         }
-        if (stack.isEmpty()){
+        if (stack.isEmpty()) {
             return true;
         }
-        return false ;
+        return false;
+    }
 
+
+    /**
+     * 解法2。和上面原理相同，上面的方法是左括号入栈，下面则是右括号入栈
+     */
+    public boolean isValid2(String s) {
+        Stack<Character> stack = new Stack();
+        for (char c : s.toCharArray()) {
+            if (c == '(') {
+                stack.push(')');
+            } else if (c == '[') {
+                stack.push(']');
+            } else if (c == '{') {
+                stack.push('}');
+             //如果不等于栈顶元素则肯定错误，但是如果相等了就出栈
+            } else if (stack.isEmpty() || c != stack.pop()) {
+                return false;
+            }
+        }
+        return stack.isEmpty();
     }
 }
