@@ -1,12 +1,10 @@
-package com.hlj.arith.demo00022_最长回文子串;
+package com.hlj.arith.demo00022_最长回文子串_no;
 
 import org.junit.Test;
 
 /**
 作者：
-
 题目：最长回文子串
-
 解题思路：
 
 */
