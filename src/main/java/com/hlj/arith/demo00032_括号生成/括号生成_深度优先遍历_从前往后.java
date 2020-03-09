@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @author HealerJean
- * @ClassName 括号生成_深度优先遍历_1
+ * @ClassName 括号生成_深度优先遍历_从后往前
  * @date 2020/3/9  15:40.
  * @Description
  */
@@ -17,7 +17,7 @@ import java.util.List;
 解题思路：深度优先遍历,从上到下，构建一颗树
  最最需要注意的地方是：剪枝（左括号可以使用的个数严格大于右括号可以使用的个数，才剪枝，注意这个细节）
 */
-public class 括号生成_深度优先遍历_2 {
+public class 括号生成_深度优先遍历_从前往后 {
 
     @Test
     public void test(){
