@@ -45,7 +45,7 @@ public class 三数之和 {
             if (nums[k] > 0) {
                 break;
             }
-            // 去重
+            // 去重复
             if (k > 0 && nums[k] == nums[k - 1]) {
                 continue;
             }

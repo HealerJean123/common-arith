@@ -7,11 +7,11 @@ import java.util.List;
 
 /**
  * @author HealerJean
- * @ClassName 括号生成_深度优先遍历_1
+ * @ClassName 括号生成_深度优先遍历_从后往前
  * @date 2020/3/9  15:40.
  * @Description
  */
-public class 括号生成_深度优先遍历_1 {
+public class 括号生成_深度优先遍历_从后往前 {
 
     @Test
     public void test(){
