@@ -48,17 +48,15 @@ public class 岛屿的最大面积 {
         if (i >= 0 && i < aLength &&
             j >= 0 && j < bLength &&
             array[i][j] == 1) {
-            //已经使用过了，讲当前节点设置为0，防止重复读取
-            array[i][j] = 0;
+
+            //防止重复执行 kuosan方法。防止重复执行 kuosan方法。
+            array[i][j] = 2;
             //每次进入就 + 1
             int num = kuosan(i - 1, j, array) +
                     kuosan(i + 1, j, array) +
                     kuosan(i, j - 1, array) +
                     kuosan(i, j + 1, array) +
                     1;
-
-            //防止重复执行 kuosan方法。
-            array[i][j] = 2;
             return num;
         }
         return 0;
