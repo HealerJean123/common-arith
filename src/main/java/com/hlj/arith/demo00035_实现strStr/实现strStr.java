@@ -14,15 +14,15 @@ import java.util.Arrays;
     示例 2:
         输入: haystack = "aaaaa", needle = "bba"
         输出: -1
- 解题思路：
+ 解题思路：KMP算法
 */
 public class 实现strStr {
 
 
     @Test
     public void test(){
-        System.out.println(Arrays.toString(getNext("ABCDABDC")));
-        System.out.println(strStr("ABCABCDABDC", "ABCDABDC"));
+        System.out.println(Arrays.toString(getNext("issip")));
+        System.out.println(strStr("mississippi", "issip"));
     }
 
 
@@ -30,6 +30,10 @@ public class 实现strStr {
         if (pattern.length() == 0) {
             return 0;
         }
+        if (txt.length() == 0){
+            return -1;
+        }
+
         //i 表示 text 中的位置，j 表示 find 中的位置
         int[] next = getNext(pattern);
         //遍历 txt 中的字符
@@ -37,7 +41,7 @@ public class 实现strStr {
             //while放在开头，因为是刚刚开始匹配，如果不成立，next数组马上回溯
             // j!= 0 但是不相等，表示刚刚经过匹配，这里是 KMP 算法的关键点，移动位置为回溯 next[j]
             while (j != 0 && txt.charAt(i) != pattern.charAt(j)) {
-                j = next[j - 1];
+                j = next[j];
             }
             //如果 i 位置和 j 位置的字符相同，待匹配字符串移动一位
             if (txt.charAt(i) == pattern.charAt(j)) {
@@ -53,11 +57,17 @@ public class 实现strStr {
         return -1;
     }
 
+
     /**
      * 获取next数组
      */
-    public static int[] getNext(String sub) {
-        int[] next = new int[sub.length()];
+    public static int[] getNext(String find) {
+
+        int[] next = new int[find.length()];
+        if (find.length() ==1){
+            next[0] = 0;
+            return next;
+        }
         //第一个和第二个是0，因为同时不存在前缀和后缀
         next[0] = 0;
         next[1] = 0;
@@ -66,9 +76,9 @@ public class 实现strStr {
         // k 为 next[i] 当前的值，初始化的时候，next[1] = 0 ,所以k为0
         int i = 1, k = 0;
         // 所以i next[i+1] 是通过 next[i] 求的，i 不会超过 sub.length() - 1
-        while (i < sub.length() - 1) {
+        while (i < find.length() - 1) {
             //如果字符串位置 `i `和位置 `next[i] `处的两个字符相同，则 `next[i+1]` = `next[i] + 1`
-            if (sub.charAt(i) == sub.charAt(k)) {
+            if (find.charAt(i) == find.charAt(k)) {
                 next[i + 1] = k + 1;
                 //因为上面 k 为next[i]，while下一步执行的就是i + 1
                 //上面 next[i + 1] 已经给出值了，所以继续执行while的话， i 和 k 都要加 1（i指针移动加1，k为值加1）
