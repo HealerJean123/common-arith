@@ -62,7 +62,7 @@ public class 实现strStr {
      * 获取next数组
      */
     public static int[] getNext(String find) {
-
+        //如果数组长度为1，则直接返回0即可
         int[] next = new int[find.length()];
         if (find.length() ==1){
             next[0] = 0;
