@@ -11,7 +11,7 @@ import org.junit.Test;
         从 rev * 10 + pop > MAX_VALUE这个溢出条件来看
             当出现 `ans > MAX_VALUE / 10 `，则一定溢出   （比如 2147483641）比如：res = 214748365 ->  res * 10 = 2147483650 > 2147483641 溢出
             当出现 `ans == MAX_VALUE / 10` ，但是有余数 且 pop > 7 时，则一定溢出，7是 2^31-1的个位数：比如 res = 214748364  pop > 7  则肯定溢出
-        从 `rev * 10 + pop < MIN_VALU`E这个溢出条件来看**
+        从 `rev * 10 + pop < MIN_VALU`E这个溢出条件来看
             当出现 ans < MIN_VALUE / 10 ，则一定溢出
             当出现 ans == MIN_VALUE / 10 且 pop < -8 时，则一定溢出，8是-2^31的个位数
  */
