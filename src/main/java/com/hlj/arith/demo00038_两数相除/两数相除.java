@@ -28,7 +28,7 @@ public class 两数相除 {
      */
     @Test
     public void test() {
-        System.out.println(divide( Integer.MIN_VALUE, 1));
+        System.out.println(divide( 1, 1));
     }
 
 
