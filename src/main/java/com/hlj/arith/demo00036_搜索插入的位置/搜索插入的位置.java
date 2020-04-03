@@ -1,14 +1,14 @@
-package com.hlj.arith.demo00036_搜索插入的顺序;
+package com.hlj.arith.demo00036_搜索插入的位置;
 
 import org.junit.Test;
 
 /**
  * @author HealerJean
- * @ClassName 搜索插入的顺序
+ * @ClassName 搜索插入的位置
  * @date 2020/3/12  19:31.
  * @Description
  */
-public class 搜索插入的顺序 {
+public class 搜索插入的位置 {
 
     @Test
     public void test() {
