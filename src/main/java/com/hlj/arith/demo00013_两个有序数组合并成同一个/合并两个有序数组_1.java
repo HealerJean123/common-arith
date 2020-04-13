@@ -13,7 +13,7 @@ import java.util.Arrays;
 解题思路：
     新建一个数组C ，上面开头的两个数组，依次比较大小，大的放进来，9先进入，指针移动到8，然后8再和下面的进行比较，相同，分别移动进来，然后A数组指针移动饿到7，数组B指针移动到5，依次执行
  */
-public class 两个有序数组合并成同一个 {
+public class 合并两个有序数组_1 {
 
     @Test
     public void test() {
