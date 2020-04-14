@@ -12,14 +12,16 @@ public class 二分查找 {
 
     @Test
     public void test() {
-        int a[] = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 16, 17, 18, 19, 20};
-        int x = 20;
+        // int a[] = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 16, 17, 18, 19, 20};
+        int a[] = new int[]{1, 2};
+
+        int x = 3;
         System.out.println(method(a, x));
     }
 
     public int method(int[] a, int x) {
         int low = 0;
-        int high = a.length ;
+        int high = a.length - 1 ;
         int mid;
         //最后一定的是low和hig重合和x得坐标相等
         while (low <= high) {
@@ -32,9 +34,6 @@ public class 二分查找 {
             }
             if (a[mid] > x) {
                 high = mid - 1;
-            }
-            if (low > high) {
-                throw new IllegalArgumentException("查找失败");
             }
         }
         throw new IllegalArgumentException("查找失败");

@@ -35,8 +35,8 @@ public class 寻找两个有序数组的中位数 {
         }
 
 
-        //增加i的方式使用折半查找
-        int iMin = 0, iMax = m;
+        //增加i的方式使用折半查找,下面有i的边界判断，所以这里imax = m即可
+        int iMin = 0, iMax = m ;
 
         while (iMin <= iMax) {
             //i 折半查找中间值
