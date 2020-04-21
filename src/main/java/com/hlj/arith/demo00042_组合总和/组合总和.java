@@ -8,10 +8,31 @@ import java.util.*;
  * 作者：HealerJean
  * 题目：组合总和
  * 给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。candidates 中的数字可以无限制重复被选取。
+ 说明：
+
+ 所有数字（包括 target）都是正整数。
+ 解集不能包含重复的组合。 
+ 示例 1:
+
+ 输入: candidates = [2,3,6,7], target = 7,
+ 所求解集为:
+ [
+ [7],
+ [2,2,3]
+ ]
+ 示例 2:
+
+ 输入: candidates = [2,3,5], target = 8,
+ 所求解集为:
+ [
+   [2,2,2,2],
+   [2,3,3],
+   [3,5]
+ ]
+
  * 解题思路：
  */
 public class 组合总和 {
-
 
     @Test
     public void test() {
@@ -50,7 +71,7 @@ public class 组合总和 {
                 stack.push(candidates[i]);
                 //目标值减去元素值，
                 dfs(target - candidates[i], i, stack, candidates, res);
-                //如果能走到这里，说明回溯已经完成了，但是却没有结果，因为走多了，所以要回退到上一个节点。具体debug一遍就知道了
+                //如果能走到这里，说明回溯已经完成了，或者有了结果，或者没有结果，因为走多了，所以要回退到上一个节点。具体debug一遍就知道了
                 stack.pop();
             }
         }
