@@ -61,7 +61,7 @@ public class 螺旋矩阵_2 {
         int bottom = matrix.length -1 ;
         int left = 0;
         while (num <= count){
-            //从左到右
+            //在顶部从左到右
             for (int k = left ; k <= right ; k++){
                 list.add(matrix[top][k]);
                 num++;
@@ -71,7 +71,7 @@ public class 螺旋矩阵_2 {
             // if (num > count){
             //     break;
             // }
-            //从上到下
+            //在右面从上到下
             for (int k = top ; k <= bottom ; k++){
                 list.add(matrix[k][right]);
                 num++;
@@ -81,7 +81,7 @@ public class 螺旋矩阵_2 {
             if (num > count){
                 break;
             }
-            //从右到左
+            //在底部从右到左
             for (int k = right; k >= left ; k--){
                list.add(matrix[bottom][k]);
                num++;
