@@ -1,4 +1,4 @@
-package com.hlj.arith.demo00057_最短路径;
+package com.hlj.arith.demo00057_二维矩阵最短路径;
 
 import org.junit.Test;
 
@@ -24,11 +24,11 @@ public class 二维矩阵最短路径 {
                 {8, 1, 3, 4},
                 {8, 8, 4, 0}
         };
-        System.out.println(getRoad(matrix));
+        System.out.println(minPathSum(matrix));
     }
 
 
-    public int getRoad(int[][] matrix) {
+    public int minPathSum(int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;
         int dp[][] = new int[m][n];
