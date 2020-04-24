@@ -3,11 +3,10 @@ package com.hlj.arith.demo00053_最大子序和;
 import org.junit.Test;
 
 /**
- * @author HealerJean
- * @ClassName 最大子序和
- * @date 2020/4/22  18:25.
- * @Description
- */
+作者：HealerJean
+题目：最大子序和
+解题思路：
+*/
 public class 最大子序和 {
 
     @Test
