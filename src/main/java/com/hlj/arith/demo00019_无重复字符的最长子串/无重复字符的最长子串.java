@@ -46,7 +46,7 @@ public class 无重复字符的最长子串 {
                 start = Math.max(map.get(s.charAt(j)), start);
             }
 
-            //j-start+1 表示当前位置（j + 1）-起始位置
+            //j-rotateRightMethod+1 表示当前位置（j + 1）-起始位置
             length = Math.max(length, j + 1- start );
             //保存依次保存所有的数据，如果已经存在则覆盖保存成最新的
             map.put(s.charAt(j), j + 1);
