@@ -57,7 +57,8 @@ public class 买卖股票的最佳时机_2 {
                     min = prices[i];
                 }else {
                     //min肯定会有值，如果可以买入，
-                    // 并且买入价格是按照比第二条的价格高的时候或者是数组最后一个元素的时候，要卖出，否则继续移动i指针
+                    // 并且买入价格是按照比第二条的价格高或者相等的时候会截至，因为你想相等了还可以买入呀，
+                    // 的时候或者是数组最后一个元素的时候，要卖出，否则继续移动i指针
                     if ((i != prices.length-1) && (prices[i] >= prices[i+1]) || i == prices.length-1){
                         res = res + prices[i] - min;
                         flag = true;
