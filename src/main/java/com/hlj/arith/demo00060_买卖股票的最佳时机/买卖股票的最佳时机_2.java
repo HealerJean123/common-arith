@@ -39,7 +39,7 @@ public class 买卖股票的最佳时机_2 {
             return 0;
         }
 
-        // flag是否已经卖出
+        //flag 可以买入：true，可以随时卖出：false
         boolean flag = false ;
         int min = prices[0]; //买入的最低价格
         int res = 0;
@@ -49,9 +49,10 @@ public class 买卖股票的最佳时机_2 {
                 min = prices[i];
                 flag = false;
             }
-            //没有卖出，说明没有买，或者没有卖
+            //可以卖出
             if (!flag){
                 //如果当前价格比买入的价格还要低或者相等的时候，设置最低买入价格，i继续向前移动
+                //我们是要买入，相等的时候，你也不会卖出呀，所以一直到prices[i] 直最后的结果肯定比min大，这样才会
                 if (prices[i] <= min) {
                     min = prices[i];
                 }else {

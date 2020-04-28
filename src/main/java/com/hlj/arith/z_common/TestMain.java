@@ -11,30 +11,35 @@ import org.junit.Test;
 public class TestMain {
 
     @Test
-    public void test() {
-        int[][] matrix = {
-                { 1,  2,  3,  4},
-                { 5,  6,  7,  8},
-                { 9, 10, 11, 12},
-                {13, 14, 15, 16}
-        };
-        MatrixPrint.print(matrix);
-        System.out.println( searchMatrix(matrix, 14));
-        MatrixPrint.print(matrix);
+    public void test(){
+        // int[] prices = {3,3,5,0,0,3,1,4} ;
+        int[] prices = {1,2,3,4,5} ;
+
+        System.out.println(maxProfit(prices));
     }
 
-    public boolean searchMatrix(int[][] matrix, int target) {
-        int i = matrix.length - 1;
-        int j = 0;
-        while (i >= 0 && j < matrix[0].length){
-            if (matrix[i][j] == target){
-                return true;
-            }else if (matrix[i][j] <target ){
-                j ++ ;
-            }else {
-                i-- ;
-            }
+    public int maxProfit(int[] prices) {
+        if(prices.length == 0){
+            return 0;
         }
-        return false;
+
+        //i 表示某一天(i = 0 是第一天)， j表示自己看吧
+        int[][] dp = new int[prices.length][5] ;
+
+        //有一个未知的数字，我们需要将它设置
+        for (int i = 0 ; i < dp.length ; i++){
+            dp[i][3] = Integer.MIN_VALUE;
+        }
+        dp[0][1] = -prices[0];
+        for (int i = 1 ; i < prices.length ; i++){
+            dp[i][1] = Math.max(dp[i-1][1], -prices[i]);
+            dp[i][2] = Math.max(dp[i-1][2], prices[i] + dp[i-1][1]);
+
+            dp[i][3] = Math.max(dp[i-1][3], dp[i-1][2] -prices[i] );
+            dp[i][4] = Math.max(dp[i-1][4], dp[i-1][3] + prices[i]);
+        }
+        return  Math.max(dp[prices.length-1][2], dp[prices.length-1][4]);
     }
+
+
 }

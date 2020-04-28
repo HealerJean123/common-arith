@@ -38,12 +38,14 @@ public class Z02_1_挖金矿_递归 {
         //n 大于 1 的情况
         if (w < p[n - 1]) {
             return diguiMaxGold(n - 1, w, g, p);
+        }else {
+            //挖4座金矿
+            int a = diguiMaxGold(n - 1, w, g, p);
+            //挖5座金矿
+            int b = diguiMaxGold(n - 1, w - p[n - 1], g, p) + g[n-1];
+            return Math.max(a, b);
         }
-        //挖4座金矿
-        int a = diguiMaxGold(n - 1, w, g, p);
-        //挖5座金矿
-        int b = diguiMaxGold(n - 1, w - p[n - 1], g, p) + g[n-1];
-        return Math.max(a, b);
+
 
     }
 
