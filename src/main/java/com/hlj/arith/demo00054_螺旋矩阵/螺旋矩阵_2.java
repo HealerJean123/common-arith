@@ -68,9 +68,9 @@ public class 螺旋矩阵_2 {
             }
             top++;
 
-            // if (num > count){
-            //     break;
-            // }
+            if (num > count){
+                break;
+            }
             //在右面从上到下
             for (int k = top ; k <= bottom ; k++){
                 list.add(matrix[k][right]);

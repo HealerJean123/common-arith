@@ -109,14 +109,15 @@ public class 旋转链表 {
         ListNode listNode_1 = new ListNode(0, listNode_2);
         return listNode_1;
     }
-}
+    class ListNode{
+        int value ;
+        ListNode next ;
 
-class ListNode{
-    int value ;
-    ListNode next ;
-
-    public ListNode(int value, ListNode next) {
-        this.value = value;
-        this.next = next;
+        public ListNode(int value, ListNode next) {
+            this.value = value;
+            this.next = next;
+        }
     }
+
 }
+
