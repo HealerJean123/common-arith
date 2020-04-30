@@ -32,7 +32,7 @@ public class 删除排序链表中的重复元素_1 {
         //因为要比较当前节点和下一个节点的值，所以我们要遍历的条件就是下一个节点有值
         while (head.next != null){
              if (head.val == head.next.val){
-                 //指针删除了head.next，我们还要继续遍历比较 head的值和删除后head.next的值
+                 //指针删除了head.next，我们还要继续遍历比较 当前head的值和删除后head.next的值
                  head.next = head.next.next;
              }else {
                  head = head.next;

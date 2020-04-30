@@ -48,9 +48,8 @@ public class 买卖股票的最佳时机_2 {
             if (flag){
                 min = prices[i];
                 flag = false;
-            }
-            //可以卖出
-            if (!flag){
+             //可以卖出
+            }else {
                 //如果当前价格比买入的价格还要低或者相等的时候，设置最低买入价格，i继续向前移动
                 //我们是要买入，相等的时候，你也不会卖出呀，所以一直到prices[i] 直最后的结果肯定比min大，这样才会
                 if (prices[i] <= min) {
