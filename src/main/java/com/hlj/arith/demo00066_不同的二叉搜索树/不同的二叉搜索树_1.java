@@ -4,7 +4,7 @@ import org.junit.Test;
 
 /**
 作者：HealerJean
-题目：不同的二叉搜索树
+题目：不同的二叉搜索树1
  给定一个整数 n，求以 1 ... n 为节点组成的二叉搜索树有多少种？
 解题思路：
  给定一个整数 n，求以 1 ... n 为节点组成的二叉搜索树有多少种？
@@ -29,17 +29,24 @@ public class 不同的二叉搜索树_1 {
         System.out.println(numTrees(3));
     }
 
+    /**
+     * 所求即为：G（n）
+     */
     public int numTrees(int n) {
-        int[] G = new int[n + 1];
-        G[0] = 1;
-        G[1] = 1;
+        int[] dp = new int[n+1];
+        //空数最为第一个，而且下面要用，所以上面的数组个数为n+1
+        dp[0] = 1;
+        dp[1] = 1;
 
-        for (int i = 2; i <= n; ++i) {
-            for (int j = 1; j <= i; ++j) {
-                G[i] += G[j - 1] * G[i - j];
+        // j 为有多少个数字要组成二叉搜索树
+        //j = 0 和 j - 1 提前给出来了，所以j从2开始计算，
+        for(int j = 2; j <= n; j++) {
+            //i 为当前跟节点 ,该循环相当于就是将, j个数字都作为节点的时相加就是 dp[j]
+            for(int i = 1; i <= j; i++) {
+                dp[j] += dp[i-1] * dp[j-i];
             }
         }
-        return G[n];
+        return dp[n];
     }
 
 }
