@@ -3,6 +3,7 @@ package com.hlj.arith.demo00068_验证二叉搜索树;
 import lombok.Data;
 import org.junit.Test;
 
+import java.util.HashSet;
 import java.util.Stack;
 
 /**
