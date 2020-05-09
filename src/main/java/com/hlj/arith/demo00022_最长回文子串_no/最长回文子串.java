@@ -25,9 +25,9 @@ public class 最长回文子串 {
         }
 
         // 初始化数组dp （i到j为回文），将对称点设置为true 也就是只有一个字符的情况
-        boolean[][] dp = new boolean[len][len];
+        int[][] dp = new int[len][len];
         for (int i = 0; i < len; i++) {
-            dp[i][i] = true;
+            dp[i][i] = 1;
         }
 
         int maxLen = 1;
@@ -38,18 +38,18 @@ public class 最长回文子串 {
                 if (s.charAt(i) == s.charAt(j)) {
                     //如果字符串是 ab 或者 a ，aba ，则肯定是回文，否则如果i和j所在字符串相等的话
                     if (j - i < 3) {
-                        dp[i][j] = true;
+                        dp[i][j] = 1;
                     } else {
                         dp[i][j] = dp[i + 1][j - 1];
                     }
                   //如果i和j的字符不相等，则肯定是false
                 } else {
-                    dp[i][j] = false;
+                    dp[i][j] = 0;
                 }
 
 
-                // 只要 dp[i][j] == true 成立，就表示子串 s[i, j] 是回文，此时记录回文长度和起始位置
-                if (dp[i][j]) {
+                // 只要 dp[i][j] == 1 成立，就表示子串 s[i, j] 是回文，此时记录回文长度和起始位置
+                if (dp[i][j] == 1) {
                     int curLen = j - i + 1;
                     if (curLen > maxLen) {
                         maxLen = curLen;

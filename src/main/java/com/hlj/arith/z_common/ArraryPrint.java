@@ -10,7 +10,6 @@ package com.hlj.arith.z_common;
 public class ArraryPrint {
 
 
-
     public static void  print(int[] num ){
         for (int i = 0 ; i < num.length ; i++){
             System.out.printf(num[i] + ",");
