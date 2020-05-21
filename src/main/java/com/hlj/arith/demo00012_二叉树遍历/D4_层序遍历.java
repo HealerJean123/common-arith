@@ -3,10 +3,46 @@ package com.hlj.arith.demo00012_二叉树遍历;
 import lombok.Data;
 import org.junit.Test;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class D4_层序遍历 {
+
+
+    @Test
+    public void dgTest() {
+        Node root = init();
+        System.out.println("层序遍历 从上到下，从右到左");
+        ArrayList arrayList = new ArrayList();
+        arrayList.add(root);
+        dgRightToLeft(arrayList);
+        System.out.println();
+        System.out.println("层序遍历 从上到下，从左到右");
+    }
+
+
+    /**
+     * 递归实现 层序遍历（上到下，从从右到左）：
+     * 队列的解决方案，将每一行的数据放到队列中，依次打印出来
+     */
+    public  void dgRightToLeft(ArrayList<Node> list) {
+        if (list.isEmpty()){
+            return;
+        }
+
+        ArrayList<Node> newList = new ArrayList<>();
+        for(Node node:list){
+            printNode(node);
+
+            if (node.rightNode != null){
+                newList.add(node.rightNode);
+            }
+            if (node.leftNode != null){
+                newList.add(node.leftNode);
+            }
+
+        }
+        dgRightToLeft(newList);
+    }
 
 
     @Test
@@ -18,6 +54,8 @@ public class D4_层序遍历 {
         System.out.println("层序遍历 从上到下，从左到右");
         leftToRigit(root);
     }
+
+
 
     /**
      * 层序遍历（上到下，从从右到左）：
