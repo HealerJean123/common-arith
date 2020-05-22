@@ -33,7 +33,7 @@ public class 从前序与中序遍历序列构造二叉树 {
     }
 
     public TreeNode createTree(int[] preorder, int[] inorder, int p_left_index, int p_right_index, int in_left_index, int in_right_index , Map<Integer, Integer> hashMap) {
-        if (p_left_index > p_right_index) {
+        if (p_left_index > p_right_index || in_left_index > in_right_index) {
             return null;
         }
 
@@ -52,11 +52,10 @@ public class 从前序与中序遍历序列构造二叉树 {
         int in_root_index = hashMap.get(preorder[p_left_index]);
 
         // 得到左子树中的节点数目
-        int left_size = in_root_index - in_left_index;
+        int size = in_root_index - in_left_index;
 
-
-        root.left = createTree(preorder, inorder, p_left_index + 1, p_left_index + left_size, in_left_index, in_root_index - 1, hashMap);
-        root.right = createTree(preorder, inorder, p_left_index + left_size + 1, p_right_index, in_root_index + 1, in_right_index, hashMap);
+        root.left = createTree(preorder, inorder, p_left_index + 1, p_left_index + size, in_left_index, in_root_index - 1, hashMap);
+        root.right = createTree(preorder, inorder, p_left_index + size + 1, p_right_index, in_root_index + 1, in_right_index, hashMap);
         return root;
     }
 
