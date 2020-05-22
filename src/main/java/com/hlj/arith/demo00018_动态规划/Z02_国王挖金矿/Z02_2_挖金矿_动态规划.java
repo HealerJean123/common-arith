@@ -34,17 +34,17 @@ public class Z02_2_挖金矿_动态规划 {
     public static int getMostGold(int n, int w, int[] g, int[] p) {
 
         //存放上一行的结果
-        int[] preResults = new int[w];
+        int[] preResults = new int[w +1];
         //存放当前行的结果
-        int[] results = new int[w];
+        int[] results = new int[w + 1];
 
         //填充边界格子的值
         //保存的是第一行的数据
         for (int i = 1; i <= w; i++) {
             if (i < p[0]) {
-                preResults[i-1] = 0;
+                preResults[i] = 0;
             } else {
-                preResults[i-1] = g[0];
+                preResults[i] = g[0];
             }
         }
 
@@ -52,26 +52,22 @@ public class Z02_2_挖金矿_动态规划 {
         //内层循环工人数从第二行数据开始，所以i = 1
           for (int i = 1; i < n; i++) {
             for (int j = 1; j <= w; j++) {
-                if (j < p[i]) {
-                    //这里表示的是当前人数不足以挖当前的矿的时候，等于上一行相同人数挖的矿
-                    results[j-1] = preResults[j-1];
-                } else {
-                    int a = preResults[j-1] ;
-                    int b ;
-                    //自下而上，存在一种情况，挖了当前的矿，剩下的不足以挖别的矿 j-p[j] = 剩余人数
-                    if (j - p[i]  < 1 ){
-                        b =  g[i];
-                    }else {
-                        b = preResults[j - p[i] -1] +  g[i] ;
-                    }
-                    results[j-1] = Math.max(a, b);
+                //p[i] 当前金矿的人数 g[i] 当前金矿的数量
+                //  如果当前人数小于金矿，则最多挖的金矿数量等于相同人数 的上一层金矿的数量
+                if (j < p[i]){
+                    results[j] = preResults[j];
+                }else {
+                    int  a = preResults[j];
+                    int  b = preResults[j - p[i]] + g[i];
+                    results[j] =  Math.max(a, b) ;
                 }
             }
-            for (int j = 0; j < w; j++) {
+
+            for (int j = 1; j <= w; j++) {
                 preResults[j] = results[j];
             }
         }
-        return results[w-1];
+        return results[w];
     }
 
 

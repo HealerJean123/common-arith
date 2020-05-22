@@ -14,14 +14,14 @@ import java.util.List;
  示例：
      输入：s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
      输出：["AAAAACCCCC", "CCCCCAAAAA"]
-解题思路：
+解题思路：使用Set ，遍历字符串，每次返将10个长度的放入，如果重复的话说明是我们想要的，放到List中去，如果List存在就不放
 */
 public class 重复的DNA序列 {
 
 
     @Test
     public void test(){
-        System.out.println("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT");
+        System.out.println(findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"));
     }
 
 

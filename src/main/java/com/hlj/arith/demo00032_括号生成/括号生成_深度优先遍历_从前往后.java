@@ -6,12 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author HealerJean
- * @ClassName 括号生成_深度优先遍历_从后往前
- * @date 2020/3/9  15:40.
- * @Description
- */
-/**
 作者：HealerJean
 题目：括号生成
 解题思路：深度优先遍历,从上到下，构建一颗树

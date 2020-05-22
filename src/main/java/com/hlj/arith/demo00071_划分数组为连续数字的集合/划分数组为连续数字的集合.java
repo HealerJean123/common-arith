@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 /**
  * 作者：HealerJean
  * 题目：
- * <p>
  * 给你一个整数数组 nums 和一个正整数 k，请你判断是否可以把这个数组划分成一些由 k 个连续数字组成的集合。
  * 如果可以，请返回 True；否则，返回 False。
  * 解题思路：
