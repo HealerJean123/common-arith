@@ -10,10 +10,10 @@ public class 从中序与后序遍历序列构造二叉树 {
 
     @Test
     public void test(){
-        int[] preorder = {9,3,15,20,7} ;
-        int[] inorder = {9,15,7,20,3} ;
+        int[] inorder = {9,3,15,20,7} ;
+        int[] postorder = {9,15,7,20,3} ;
 
-        System.out.println(buildTree(preorder, inorder));
+        System.out.println(buildTree(inorder, postorder));
     }
 
     public TreeNode buildTree(int[] inorder, int[] postorder) {
@@ -36,14 +36,7 @@ public class 从中序与后序遍历序列构造二叉树 {
         Integer  in_root_index = map.get(postorder[post_right_index]);
         int size = in_root_index - in_left_index ;
 
-
-
-
-
         root.left =  createTree(map ,inorder, postorder, in_left_index , in_root_index - 1, post_left_index, post_left_index + size  -1) ;
-
-
-
 
         root.right =  createTree(map ,inorder, postorder, in_root_index+1, in_right_index, post_left_index + size , post_right_index) ;
         return root ;

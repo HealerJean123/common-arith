@@ -10,6 +10,9 @@ import java.util.Map;
 作者：HealerJean
 题目：
 解题思路：类似于汉诺塔，想象整体
+
+ 跟  左   右
+ 左  跟   右
 */
 public class 从前序与中序遍历序列构造二叉树 {
 
