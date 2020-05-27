@@ -47,7 +47,6 @@ public class 缺失的第一个正数 {
         if (!contains1) {
             return 1;
         }
-
         // 通过了上面的，说明里面肯定有1，
 
 
@@ -62,6 +61,7 @@ public class 缺失的第一个正数 {
             if ((nums[i] <= 0) || (nums[i] > n)) {
                 nums[i] = 1;
             }
+
         }
 
 
