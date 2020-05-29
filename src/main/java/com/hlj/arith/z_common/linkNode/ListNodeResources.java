@@ -1,5 +1,7 @@
 package com.hlj.arith.z_common.linkNode;
 
+import org.junit.Test;
+
 /**
  * @author HealerJean
  * @ClassName ListNodeResources
@@ -7,6 +9,12 @@ package com.hlj.arith.z_common.linkNode;
  * @Description
  */
 public class ListNodeResources {
+
+    @Test
+    public void test(){
+        String str = listNodeStr(listNode(),"");
+        System.out.println(str);
+    }
 
     public ListNode listNode(){
         ListNode listNode_5 = new ListNode(5, null);
@@ -17,10 +25,20 @@ public class ListNodeResources {
         return listNode_1;
     }
 
+    public String listNodeStr(ListNode listNode, String str){
+        if (listNode == null){
+            return str.substring(0, str.lastIndexOf(","));
+        }
+        str = str + listNode.val + "," ;
+        return listNodeStr(listNode.next, str);
+    }
+
     class ListNode{
         int val;
         ListNode next ;
-
+        public ListNode(int val) {
+            this.val = val;
+        }
         public ListNode(int val, ListNode next) {
             this.val = val;
             this.next = next;
