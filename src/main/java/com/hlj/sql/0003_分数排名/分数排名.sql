@@ -19,7 +19,7 @@ insert into Scores (Id, Score) values (6, 3.65);
 
 select * from Scores where Score > 3 order by Score desc ;
 
-# 第一种 A是主题，子查询查询大于A中等于（唯一）分数的的个数 也就是排名
+# 第一种 A是主题，子查询查询大于A中等于（唯一，因为会有重复的分数比它大，重复的分数看做是一个排名）分数的的个数 也就是排名
 select A.Score as  score,
      (select COUNT(distinct B.Score) from Scores B where B.Score >= A.Score) as Rank
 from Scores A order by  Score   DESC;
