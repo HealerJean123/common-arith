@@ -29,11 +29,15 @@ insert into department (Id, Name) values (1, 'IT');
 insert into department (Id, Name) values (2, 'Sales');
 
 
-
-
-
-# 最重要的是后面的  < 3 注意里面的  DISTINCT （表示重复的）
+# 最重要的是后面的  < 3 注意里面的  DISTINCT（可能出现重复的人，所以用了）
 select D.Name as Department, E.Name as Employee, E.Salary
 from Employee E
          join Department D on D.Id = E.DepartmentId
-WHERE (SELECT count(DISTINCT Salary) from Employee A where A.Salary > E.Salary and A.DepartmentId = E.DepartmentId) < 3;
+WHERE (
+          SELECT count(DISTINCT Salary)
+          from Employee A where
+                                A.Salary > E.Salary and
+                                A.DepartmentId = E.DepartmentId)
+          < 3 order by Department, Salary desc ;
+
+
