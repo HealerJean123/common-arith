@@ -1,4 +1,4 @@
-package com.hlj.arith.demo00079_和可被K整除的子数组;
+package com.hlj.arith.demo00079_和可被K整除的连续子数组;
 
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ import java.util.Map;
 解题思路：
  如果sum1%k=n，sum2%k=n，那么(sum2-sum1)%k=0
 */
-public class 和可被K整除的子数组 {
+public class 和可被K整除的连续子数组 {
 
     @Test
     public void test(){
