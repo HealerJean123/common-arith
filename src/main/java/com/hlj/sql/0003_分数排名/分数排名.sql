@@ -1,3 +1,4 @@
+drop table if exists  Scores ;
 create table Scores
 (
 
@@ -5,7 +6,7 @@ create table Scores
     Score  decimal(16,2)
 );
 
-
+truncate Scores;
 insert into Scores (Id, Score) values (1, 3.50);
 insert into Scores (Id, Score) values (2, 3.65);
 insert into Scores (Id, Score) values (3, 4.00);
