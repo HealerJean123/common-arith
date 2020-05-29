@@ -38,4 +38,4 @@ WHERE  (SELECT COUNT(DISTINCT A.Salary)
            FROM Employee A
            WHERE A.Salary > E.Salary
              AND A.DepartmentId = E.DepartmentId
-) < 3;
+) < 1;

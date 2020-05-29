@@ -56,13 +56,24 @@ insert into department (Id, Name) values (2, 'Sales');
 # 使用Join连接，保证有部门
 select D.Name as Department, A.Name as Employee, A.Salary
 from Employee A
-          join (select max(Salary) as MaxSalary, B.DepartmentId from Employee B group by DepartmentId) C
+         join Department D on A.DepartmentId = D.Id
+         join (select max(Salary) as MaxSalary, B.DepartmentId from Employee B group by DepartmentId) C
                    on C.DepartmentId = A.DepartmentId
-          join Department D on A.DepartmentId = D.Id
 where A.Salary = C.MaxSalary;
 
 
-
+# 下面着这种也可以
+SELECT D.Name AS 'Department',
+       E.Name AS 'Employee',
+       E.Salary
+FROM Employee E
+         JOIN
+     Department D ON E.DepartmentId = D.Id
+WHERE (SELECT COUNT(DISTINCT A.Salary)
+       FROM Employee A
+       WHERE A.Salary > E.Salary
+         AND A.DepartmentId = E.DepartmentId
+      ) < 1;
 
 
 
