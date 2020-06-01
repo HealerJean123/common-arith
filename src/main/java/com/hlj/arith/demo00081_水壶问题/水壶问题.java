@@ -93,7 +93,6 @@ public class 水壶问题 {
         List<State> nextStates = new ArrayList<>(8);
 
         // 按理说应该先判断状态是否存在，再生成「状态」对象，这里为了阅读方便，一次生成 8 个对象
-
         // 以下两个状态，对应操作 1
         // 外部加水，使得 A 满
         State nextState1 = new State(x, curY);
