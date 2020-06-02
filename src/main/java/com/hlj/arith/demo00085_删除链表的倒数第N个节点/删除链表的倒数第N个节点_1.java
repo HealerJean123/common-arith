@@ -1,14 +1,19 @@
 package com.hlj.arith.demo00085_删除链表的倒数第N个节点;
 
-import com.hlj.arith.z_common.linkNode.ListNodeResources;
 import org.junit.Test;
 
 /**
  * 作者：HealerJean
  * 题目：删除链表的倒数第N个节点
+ 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
+ 说明：给定的 n 保证是有效的。
+ 进阶：你能尝试使用一趟扫描实现吗？
+ 示例：
+ 给定一个链表: 1->2->3->4->5, 和 n = 2.
+ 当删除了倒数第二个节点后，链表变为 1->2->3->5.
  * 解题思路：
  */
-public class 删除链表的倒数第N个节点 {
+public class 删除链表的倒数第N个节点_1 {
 
     @Test
     public void test() {
@@ -17,6 +22,8 @@ public class 删除链表的倒数第N个节点 {
 
     /**
      * 两次遍历
+     * 1、第一次遍历求的count的大小
+     * 2、第二次找到对应位置，然后删除
      */
     public ListNode removeNthFromEnd(ListNode head, int n) {
 
