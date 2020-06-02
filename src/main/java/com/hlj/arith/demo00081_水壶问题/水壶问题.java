@@ -72,7 +72,7 @@ public class 水壶问题 {
                 //如果访问过就不往里面放了，这样讲队列中的东西全部取出后，就表示结束这个while循环了
                 if (!existSet.contains(nextState)) {
                     // 添加到队列以后，就弄成已访问
-                    queue.offer(nextState);
+                    queue.add(nextState);
                     existSet.add(nextState);
                 }
             }

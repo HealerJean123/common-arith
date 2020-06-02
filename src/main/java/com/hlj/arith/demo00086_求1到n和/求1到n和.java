@@ -1,4 +1,4 @@
-package com.hlj.arith.demo00086_求n和;
+package com.hlj.arith.demo00086_求1到n和;
 
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ import org.junit.Test;
          输出: 45
 解题思路：
 */
-public class 求n和 {
+public class 求1到n和 {
 
     @Test
     public void test(){
