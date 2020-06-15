@@ -1,4 +1,4 @@
-package com.hlj.arith.demo00087_和为K的子数组;
+package com.hlj.arith.demo00087_和为K的连续子数组;
 
 /**
  * @author HealerJean
@@ -21,7 +21,7 @@ import java.util.HashMap;
          输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。
  解题思路：
 */
-public class 和为K的子数组 {
+public class 和为K的连续子数组 {
 
     @Test
     public void test(){

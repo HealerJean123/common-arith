@@ -15,36 +15,30 @@ public class TestMain {
 
     @Test
     public void test(){
-        System.out.println(strStr("a", "a"));
+        String[] strs = {"flower","flow","flight"} ;
+        System.out.println(longestCommonPrefix(strs));
     }
 
-    public int strStr(String txt, String pattern) {
-        if (pattern.length() == 0) {
-            return 0;
+
+    public String longestCommonPrefix(String[] strs) {
+
+        if (strs.length == 0) {
+            return "";
         }
-        if (txt.length() == 0) {
-            return -1;
-        }
 
 
-        int  i = 0 ;
-        int j = 0 ;
-        int index = 0 ;
-        while (j < pattern.length() && index <= txt.length() - pattern.length()) {
-            if (txt.charAt(i) == pattern.charAt(j)) {
-                i++;
-
-                j++;
-                if (j == pattern.length()) {
-                    return i - pattern.length();
+        String pre = strs[0];
+        for (int i = 1 ; i < strs.length ; i ++){
+            String str = strs[i];
+            int j = 0 ;
+            for ( ; j  < str.length() && j < pre.length(); j ++){
+                if (str.charAt(j) != pre.charAt(j) ){
+                    break;
                 }
-            } else {
-                index++;
-                j = 0;
-                i = index;
             }
+            pre = pre.substring(0, j);
         }
-        return -1 ;
+        return pre;
     }
 
 }
