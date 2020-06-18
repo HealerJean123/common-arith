@@ -6,6 +6,14 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+作者：HealerJean
+题目：解题思路：类似于汉诺塔，想象整体
+
+ 左  跟   右
+ 左  右   跟
+
+*/
 public class 从中序与后序遍历序列构造二叉树 {
 
     @Test
@@ -41,9 +49,6 @@ public class 从中序与后序遍历序列构造二叉树 {
 
 
         root.left =  createTree(map ,inorder, postorder, in_left_index , in_root_index - 1, post_left_index, post_left_index + size  -1) ;
-
-
-
 
         root.right =  createTree(map ,inorder, postorder, in_root_index+1, in_right_index, post_left_index + size , post_right_index-1) ;
         return root ;
