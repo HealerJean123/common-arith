@@ -3,8 +3,6 @@ package com.hlj.arith.demo00097_验证回文串;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
 
 /**
 作者：HealerJean
