@@ -31,31 +31,29 @@ public class 二进制求和 {
         int[] res = new int[a.length()+ b.length()];
         int aIdx = a.length()-1 ;
         int bIdx = b.length()-1;
-        int cIdx = 0;
         int temp = 0;
+        StringBuilder stringBuilder = new StringBuilder();
         while (aIdx >= 0 && bIdx >= 0) {
             Integer aVal = Integer.valueOf(String.valueOf( a.charAt(aIdx)));
             Integer bVal = Integer.valueOf(String.valueOf( b.charAt(bIdx)));
             Integer temVal = aVal + bVal + temp;
 
             int pop = temVal % 2;
-            res[cIdx] = pop ;
+            stringBuilder.append(pop) ;
 
             temp = temVal / 2;
-            cIdx++;
             aIdx--;
             bIdx--;
         }
 
         while (aIdx >= 0){
-            Integer aVal = Integer.valueOf(String.valueOf( a.charAt(aIdx)));
+            Integer aVal = Integer.valueOf(String.valueOf(a.charAt(aIdx)));
             Integer temVal = aVal  + temp;
 
             int pop = temVal % 2;
-            res[cIdx] = pop ;
+            stringBuilder.append(pop) ;
 
             temp = temVal / 2;
-            cIdx++;
             aIdx--;
         }
 
@@ -65,26 +63,19 @@ public class 二进制求和 {
             Integer temVal = bVal  + temp;
 
             int pop = temVal % 2;
-            res[cIdx] = pop ;
+            stringBuilder.append(pop) ;
 
             temp = temVal / 2;
-            cIdx++;
             bIdx--;
         }
 
         if (temp != 0 ){
             int pop = temp % 2;
-            res[cIdx] = pop ;
-            cIdx ++ ;
+            stringBuilder.append(pop) ;
             temp = temp/2 ;
         }
 
-        StringBuilder stringBuilder = new StringBuilder();
-        // cIdx 多走了1位
-        for (int i = cIdx-1 ; i >=0 ; i--){
-            stringBuilder.append(res[i]);
-        }
-        return stringBuilder.toString() ;
+        return stringBuilder.reverse().toString() ;
     }
 
 
