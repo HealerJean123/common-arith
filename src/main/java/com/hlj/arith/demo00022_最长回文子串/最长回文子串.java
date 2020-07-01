@@ -1,4 +1,4 @@
-package com.hlj.arith.demo00022_最长回文子串_no;
+package com.hlj.arith.demo00022_最长回文子串;
 
 import org.junit.Test;
 
@@ -36,8 +36,9 @@ public class 最长回文子串 {
             for (int i = j-1; i >= 0; i--) {
 
                 if (s.charAt(i) == s.charAt(j)) {
-                    //如果字符串是 ab 或者 a ，aba ，则肯定是回文，否则如果i和j所在字符串相等的话
-                    if (j - i < 3) {
+                    //表格中观察如果 j-i < 2的时候dp[i + 1][j - 1] 是0，所以这里要特殊处理一下，
+                    // j - i < 2  => aa ，这种情况
+                    if (j - i < 2) {
                         dp[i][j] = 1;
                     } else {
                         dp[i][j] = dp[i + 1][j - 1];

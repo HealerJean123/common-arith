@@ -37,15 +37,14 @@ public class 重复的DNA序列 {
         for (int i = 0; i + 10 <= s.length(); i++) {
             //包头不包尾，截取长度为10
             String str = s.substring(i, i + 10);
-            //如果能添加则继续走，说明肯定是唯一的
-            if (set.add(str)) {
-                continue;
+            if (!set.add(str)) {
+
+                //，走到这里说明set 说明 str重复了 。加入结果集中不包含的
+                if (!res.contains(str)) {
+                    res.add(str);
+                }
             }
 
-            //，走到这里说明set 说明 str重复了 。加入结果集中不包含的
-           if (!res.contains(str)) {
-                res.add(str);
-            }
         }
         return res;
     }
