@@ -68,6 +68,8 @@ public class 从先序遍历还原二叉树 {
                     //前一个节点的左子节点为当前节点
                     stack.peek() .left = node;
                 }
+
+             //能够到这个false 栈中的数据肯定比leve大
             } else {
                 //前一个节点不是当前节点的父节点 ,则一直出栈，直到找到父节点
                 while (level != stack.size()) {
