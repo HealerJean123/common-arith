@@ -54,11 +54,11 @@ public class 括号生成_深度优先遍历_从前往后 {
         }
 
         //如果左节点或者右节点大于 0 ，则添加即可
-        if (left <=  n) {
+        if (left < n) {
             dfs(curStr + "(", left + 1, right, n ,res);
         }
 
-        if (right <= n) {
+        if (right < n) {
             dfs(curStr + ")", left, right + 1, n, res);
         }
     }

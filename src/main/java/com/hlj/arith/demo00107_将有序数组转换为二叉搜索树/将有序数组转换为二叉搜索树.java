@@ -51,6 +51,11 @@ public class 将有序数组转换为二叉搜索树 {
     }
 
 
+
+
+
+
+
     public  void collect(TreeNode root, LinkedList<Integer> linkedList) {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
