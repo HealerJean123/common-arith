@@ -31,7 +31,7 @@ public class 和可被K整除的连续子数组 {
 
     public int subarraysDivByK(int[] A, int K) {
         Map<Integer,Integer> map = new HashMap();
-        // 余数为0，表示当前到达的位置本身就能整除。（相当于有几个 0， 集合就多几个。加入有n个0，那么最终的结果是 n + n(-1)/2 = (n+1)n/2 ，所以我们提前放入一个
+        // 余数为0，表示当前到达的位置本身就能整除。（相当于有几个 0， 集合就多几个。加入有n个0，那么最终的结果是 n + n(n-1)/2 = (n+1)n/2 ，所以我们提前放入一个
         map.put(0,1);
         int sum = 0;
         for(int num : A){
