@@ -75,7 +75,7 @@ public class 通配符匹配 {
 
         // 初始化 上面一行
         dp[0][0] = 1;
-        for (int j = 1; j <= p.length(); j++) {
+        for (int j = 1; j <= n; j++) {
             // * 匹配任意一个，这里其实主要还是判断一下首个是不是*
             if (p.charAt(j - 1) == '*'){
                 dp[0][j] = dp[0][j - 1] ;
