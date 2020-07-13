@@ -19,11 +19,10 @@ public class 鸡兔同笼 {
         int y = 6;
         int a, b;
         for (a = 0; a <= x; a++) {
-            for (b = 0; b <= x - a; b++) {
-                if (a * 2 + b * 4 == y) {
-                    System.out.println("鸡的数量为：" + a + "，兔的数量为：" + y);
-                    return;
-                }
+            b = x - a;
+            if (a * 2 + b * 4 == y) {
+                System.out.println("鸡的数量为：" + a + "，兔的数量为：" + b);
+                return;
             }
         }
         System.out.println("不存在该组合");
