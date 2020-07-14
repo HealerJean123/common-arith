@@ -50,7 +50,7 @@ public class 零钱兑换 {
     public int coinChange(int[] coins, int amount) {
 
         //凑出多少钱需要多少 ，为了好看 讲amout设置为数组的边界索引位
-        int [] fox = new int[amount + 1];
+        int [] dp = new int[amount + 1];
         //从1块钱开始算，一直到凑出amount为止
         for(int i = 1; i <= amount; i++){
             int cost = Integer.MAX_VALUE;
@@ -58,14 +58,14 @@ public class 零钱兑换 {
             for(int j = 0; j < coins.length; j++){
                 // 1、要凑的钱，必须大于等于目前的钱 才可能存在n
                 // 2、如果 i > coins[j] 那么 fox[i - coins[j]] 可能不存在，所以也要加入判断
-                if(i  >= coins[j]  && fox[i - coins[j]] != Integer.MAX_VALUE){
-                     cost = Math.min(cost, fox[i - coins[j]] + 1);
+                if(i  >= coins[j]  && dp[i - coins[j]] != Integer.MAX_VALUE){
+                     cost = Math.min(cost, dp[i - coins[j]] + 1);
                 }
             }
             //当上面不进入 if的时候，这里的fox[i] 可能为 Integer.MAX_VALUE
-            fox[i] = cost;
+            dp[i] = cost;
         }
-        return  fox[amount] == Integer.MAX_VALUE ? -1 : fox[amount];
+        return  dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
     }
 
 
