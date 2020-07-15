@@ -1,5 +1,6 @@
 package com.hlj.arith.z_common;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -11,34 +12,26 @@ import java.util.Stack;
  * @date 2020/4/22  9:33.
  * @Description
  */
+@Slf4j
 public class TestMain {
 
     @Test
     public void test(){
-        String[] strs = {"flower","flow","flight"} ;
-        System.out.println(longestCommonPrefix(strs));
+        System.out.println(numTrees(3));
     }
+    public int numTrees(int n) {
 
-
-    public String longestCommonPrefix(String[] strs) {
-
-        if (strs.length == 0) {
-            return "";
-        }
-
-
-        String pre = strs[0];
-        for (int i = 1 ; i < strs.length ; i ++){
-            String str = strs[i];
-            int j = 0 ;
-            for ( ; j  < str.length() && j < pre.length(); j ++){
-                if (str.charAt(j) != pre.charAt(j) ){
-                    break;
-                }
+        int[] dp = new int[n+1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i = 2 ; i <= n ; i ++){
+            for (int j = 1 ; j <=i ; j++){
+                dp[i] += dp[j-1]*dp[i-j];
             }
-            pre = pre.substring(0, j);
         }
-        return pre;
+        return dp[n] ;
     }
+
+
 
 }
