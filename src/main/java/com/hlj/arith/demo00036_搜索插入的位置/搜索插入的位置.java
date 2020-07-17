@@ -21,7 +21,7 @@ public class 搜索插入的位置 {
         for (int i = 0; i < nums.length; i++) {
             //相等的时候肯定成立
             //当匹配到nums数组比目标值大的时候，表示肯定在它前面，这个数组从i位置向后移动，所以当前i的位置就是目标位置
-            if (nums[i] == target || nums[i] > target) {
+            if (nums[i] >= target) {
                 return i;
             }
         }

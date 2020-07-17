@@ -16,22 +16,21 @@ import java.util.Stack;
 public class TestMain {
 
     @Test
-    public void test(){
-        System.out.println(numTrees(3));
+    public void test() {
+        int target = 5;
+        int[] nums = {1, 3, 5, 6};
+        System.out.println(searchInsert(nums, target));
     }
-    public int numTrees(int n) {
 
-        int[] dp = new int[n+1];
-        dp[0] = 1;
-        dp[1] = 1;
-        for (int i = 2 ; i <= n ; i ++){
-            for (int j = 1 ; j <=i ; j++){
-                dp[i] += dp[j-1]*dp[i-j];
+    public int searchInsert(int[] nums, int target) {
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] >= target){
+                return i ;
             }
         }
-        return dp[n] ;
+        return nums.length;
     }
-
 
 
 }
