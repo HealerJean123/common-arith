@@ -36,13 +36,13 @@ public class 不同路径_2 {
         dp[0][0] = 1 ;
         //先确定边界的值
         for (int i = 1; i < m; i++) {
-            if (obstacleGrid[i][0] == 0  &&  dp[i-1][0] == 1 ){
-                dp[i][0] = 1  ;
+            if (obstacleGrid[i][0] == 0 ){
+                dp[i][0] =  dp[i-1][0]  ;
             }
         }
         for (int j = 1; j < n; j++) {
-            if (obstacleGrid[0][j] == 0  &&  dp[0][j-1] == 1 ){
-                dp[0][j] = 1  ;
+            if (obstacleGrid[0][j] == 0 ){
+                dp[0][j] = dp[0][j-1]   ;
             }
         }
 

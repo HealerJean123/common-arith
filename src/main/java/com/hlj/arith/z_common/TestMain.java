@@ -17,19 +17,56 @@ public class TestMain {
 
     @Test
     public void test() {
-        int target = 5;
-        int[] nums = {1, 3, 5, 6};
-        System.out.println(searchInsert(nums, target));
+       String s1 = "aa", s2 = "ab", s3 = "abaa" ;
+        System.out.println(isInterleave(s1, s2, s3));
     }
 
-    public int searchInsert(int[] nums, int target) {
+    public boolean isInterleave(String s1, String s2, String s3) {
 
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] >= target){
-                return i ;
+        int m = s1.length();
+        int n = s2.length();
+        if (m + n!= s3.length()){
+            return false;
+        }
+
+        if (s1.equals("")){
+            return s2.equals(s3);
+        }
+        if (s2.equals("")){
+            return s1.equals(s3);
+        }
+
+
+        int[][] dp = new int[m+1][n+1];
+        dp[0][0] = 1 ;
+
+        for (int i = 1 ; i <= m ; i++ ){
+            if (s1.charAt(i-1) == s3.charAt(i-1)){
+                dp[i][0] = dp[i-1][0];
             }
         }
-        return nums.length;
+        for (int j = 1 ; j <= n ; j++){
+            if (s2.charAt(j-1) == s3.charAt(j-1)){
+                dp[0][j] = dp[0][j-1];
+            }
+        }
+
+
+        for (int i  = 1 ; i <= m ; i++){
+            for (int j = 1 ; j <= n ; j++){
+                int t = i + j ;
+                if (s1.charAt(i-1) == s3.charAt(t-1)){
+                    dp[i][j] = dp[i-1][j] | dp[i][j];
+                }
+
+                if (s2.charAt(j-1) == s3.charAt(t-1)){
+                    dp[i][j] = dp[i][j-1] | dp[i][j];
+                }
+            }
+        }
+
+
+        return dp[m][n] == 1 ? true :false;
     }
 
 
