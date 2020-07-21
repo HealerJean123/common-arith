@@ -15,13 +15,18 @@ import java.util.Stack;
  */
 public class TreeNodeResources {
 
-    @Test
-    public void test(){
-        TreeNode treeNode = initTreeNode();
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        collect(treeNode, linkedList);
-        System.out.println(linkedList);
-    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     public  void collect(TreeNode root, LinkedList<Integer> linkedList) {
         Queue<TreeNode> queue = new LinkedList<>();
