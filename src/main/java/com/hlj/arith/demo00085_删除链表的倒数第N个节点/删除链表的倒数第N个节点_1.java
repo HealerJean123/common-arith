@@ -2,6 +2,9 @@ package com.hlj.arith.demo00085_删除链表的倒数第N个节点;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 作者：HealerJean
  * 题目：删除链表的倒数第N个节点
@@ -9,8 +12,8 @@ import org.junit.Test;
  说明：给定的 n 保证是有效的。
  进阶：你能尝试使用一趟扫描实现吗？
  示例：
- 给定一个链表: 1->2->3->4->5, 和 n = 2.
- 当删除了倒数第二个节点后，链表变为 1->2->3->5.
+     给定一个链表: 1->2->3->4->5, 和 n = 2.
+     当删除了倒数第二个节点后，链表变为 1->2->3->5.
  * 解题思路：
  */
 public class 删除链表的倒数第N个节点_1 {
@@ -49,6 +52,29 @@ public class 删除链表的倒数第N个节点_1 {
         return listNode;
     }
 
+
+
+    /**
+     * 使用Map装入ListNode ,Integer记录List的个数
+     */
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
+        Map<Integer, ListNode> map = new HashMap<>();
+        ListNode node = head;
+        Integer count = 0 ;
+        while (head !=null){
+            map.put(++count, head);
+            head = head.next;
+        }
+        //1、如果是第一个则直接返回
+        Integer diff = count - n ;
+        if (diff == 0){
+            return node.next ;
+        }
+
+        //2、否则找到要删除的前一位，然后删除即可
+        map.get(diff).next = map.get(diff).next.next;
+        return node;
+    }
 
     public ListNode listNode() {
         // ListNode listNode_5 = new ListNode(5, null);

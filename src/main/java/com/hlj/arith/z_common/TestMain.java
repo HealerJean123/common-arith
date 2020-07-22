@@ -17,56 +17,18 @@ public class TestMain {
 
     @Test
     public void test() {
-       String s1 = "aa", s2 = "ab", s3 = "abaa" ;
-        System.out.println(isInterleave(s1, s2, s3));
+        int[] nums = {-2,1,-3,4,-1,2,1,-5,4} ;
+        System.out.println(maxSubArray(nums));
     }
 
-    public boolean isInterleave(String s1, String s2, String s3) {
-
-        int m = s1.length();
-        int n = s2.length();
-        if (m + n!= s3.length()){
-            return false;
+    public int maxSubArray(int[] nums) {
+        int curMax = nums[0];
+        int max = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            curMax = Math.max(nums[i], curMax+ nums[i]);
+            max = Math.max(max, curMax);
         }
-
-        if (s1.equals("")){
-            return s2.equals(s3);
-        }
-        if (s2.equals("")){
-            return s1.equals(s3);
-        }
-
-
-        int[][] dp = new int[m+1][n+1];
-        dp[0][0] = 1 ;
-
-        for (int i = 1 ; i <= m ; i++ ){
-            if (s1.charAt(i-1) == s3.charAt(i-1)){
-                dp[i][0] = dp[i-1][0];
-            }
-        }
-        for (int j = 1 ; j <= n ; j++){
-            if (s2.charAt(j-1) == s3.charAt(j-1)){
-                dp[0][j] = dp[0][j-1];
-            }
-        }
-
-
-        for (int i  = 1 ; i <= m ; i++){
-            for (int j = 1 ; j <= n ; j++){
-                int t = i + j ;
-                if (s1.charAt(i-1) == s3.charAt(t-1)){
-                    dp[i][j] = dp[i-1][j] | dp[i][j];
-                }
-
-                if (s2.charAt(j-1) == s3.charAt(t-1)){
-                    dp[i][j] = dp[i][j-1] | dp[i][j];
-                }
-            }
-        }
-
-
-        return dp[m][n] == 1 ? true :false;
+        return max ;
     }
 
 
