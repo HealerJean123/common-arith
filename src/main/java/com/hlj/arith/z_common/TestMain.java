@@ -16,19 +16,34 @@ import java.util.Stack;
 public class TestMain {
 
     @Test
-    public void test() {
-        int[] nums = {-2,1,-3,4,-1,2,1,-5,4} ;
-        System.out.println(maxSubArray(nums));
+    public void test(){
+        int[][] matrix = {
+                {1, 3, 1},
+                {1, 5, 1},
+                {4, 2, 1}
+        };
+        System.out.println(minPathSum(matrix));
     }
 
-    public int maxSubArray(int[] nums) {
-        int curMax = nums[0];
-        int max = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            curMax = Math.max(nums[i], curMax+ nums[i]);
-            max = Math.max(max, curMax);
+
+    public int minPathSum(int[][] grid) {
+
+        int[][] dp = new int[grid.length][grid[0].length];
+        dp[0][0] = grid[0][0];
+        for (int j = 1; j < grid[0].length ; j++ ){
+            dp[0][j] = grid[0][j] + dp[0][j-1];
         }
-        return max ;
+
+        for (int i = 1 ; i< grid.length; i++){
+            dp[i][0] = grid[i][0] + dp[i-1][0];
+        }
+
+        for (int i = 1 ; i < grid.length; i++){
+            for (int j = 1; j < grid[0].length; j++) {
+                dp[i][j] =  grid[i][j] +Math.min(dp[i-1][j], dp[i][j-1]) ;
+            }
+        }
+        return dp[grid.length-1][grid[0].length-1];
     }
 
 
