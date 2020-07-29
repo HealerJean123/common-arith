@@ -13,7 +13,3 @@ select e.Name as Employee
 from Employee e  join Employee m on e.ManagerId = m.Id
 where e.Salary > m.Salary;
 
-
-
-
-select email from Person group by email  having count(id) > 1;

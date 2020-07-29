@@ -1,4 +1,4 @@
-package com.hlj.arith.demo00119_剪绳子;
+package com.hlj.arith.demo00119_剪绳子取模;
 
 
 import org.junit.Test;

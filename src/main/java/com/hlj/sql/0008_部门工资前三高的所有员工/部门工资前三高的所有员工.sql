@@ -35,9 +35,10 @@ from Employee E
          join Department D on D.Id = E.DepartmentId
 WHERE (
           SELECT count(DISTINCT Salary)
-          from Employee A where
-                                A.Salary > E.Salary and
-                                A.DepartmentId = E.DepartmentId)
-          < 3 order by Department, Salary desc ;
+          from Employee A
+          where A.Salary > E.Salary
+            and A.DepartmentId = E.DepartmentId)
+          < 3
+order by Department, Salary desc;
 
 
