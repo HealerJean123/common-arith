@@ -1,27 +1,26 @@
-package com.hlj.arith.z_common;
+package com.hlj.arith.demo00122_三步问题取模;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Stack;
-
 /**
- * @author HealerJean
- * @ClassName TestMain
- * @date 2020/4/22  9:33.
- * @Description
- */
-@Slf4j
-public class TestMain {
+作者：HealerJean
+题目：
+ 三步问题。有个小孩正在上楼梯，楼梯有n阶台阶，小孩一次可以上1阶、2阶或3阶。实现一种方法，计算小孩有多少种上楼梯的方式。结果可能很大，你需要对结果模1000000007。
+     示例1:
+         输入：n = 3
+         输出：4
+         说明: 有四种走法
+     示例2:
+         输入：n = 5
+         输出：13
+解题思路：看注释
+*/
+public class 三步问题取模 {
 
     @Test
-    public void test() {
+    public void test(){
         System.out.println(waysToStep(5));
-        //
-        System.out.println(Integer.MAX_VALUE);
     }
-
 
     public int waysToStep(int n) {
         if (n == 1) {
@@ -30,8 +29,8 @@ public class TestMain {
         if (n == 2) {
             return 2;
         }
-        if (n==3){
-            return  4 ;
+        if (n == 3) {
+            return 4;
         }
         int pre = 1;
         int next = 2;
