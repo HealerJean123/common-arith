@@ -1,3 +1,20 @@
+drop table if exists  Scores ;
+create table Scores
+(
+
+    Id     int(11) ,
+    Score  decimal(16,2)
+);
+
+truncate Scores;
+insert into Scores (Id, Score) values (1, 3.50);
+insert into Scores (Id, Score) values (2, 3.65);
+insert into Scores (Id, Score) values (3, 4.00);
+insert into Scores (Id, Score) values (4, 3.85);
+insert into Scores (Id, Score) values (5, 4.00);
+insert into Scores (Id, Score) values (6, 3.65);
+
+
 # 如果两个分数相同，则两个分数排名（Rank）相同。请注意，平分后的下一个名次应该是下一个连续的整数值。换句话说，名次之间不应该有“间隔”。
 #
 # +----+-------+
@@ -23,22 +40,6 @@
 # | 3.50  | 4    |
 # +-------+------+
 
-drop table if exists  Scores ;
-create table Scores
-(
-
-    Id     int(11) ,
-    Score  decimal(16,2)
-);
-
-truncate Scores;
-insert into Scores (Id, Score) values (1, 3.50);
-insert into Scores (Id, Score) values (2, 3.65);
-insert into Scores (Id, Score) values (3, 4.00);
-insert into Scores (Id, Score) values (4, 3.85);
-insert into Scores (Id, Score) values (5, 4.00);
-insert into Scores (Id, Score) values (6, 3.65);
-
 
 
 
@@ -48,6 +49,7 @@ select * from Scores where Score > 3 order by Score desc ;
 select A.Score as  score,
      (select COUNT(distinct B.Score) from Scores B where B.Score >= A.Score) as Rank
 from Scores A order by  Score   DESC;
+
 
 
 # 第二种  用户变量的方式
