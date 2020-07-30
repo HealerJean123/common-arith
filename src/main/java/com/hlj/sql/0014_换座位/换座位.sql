@@ -47,12 +47,11 @@ INSERT INTO seat (id, student) VALUES (4, 'Green');
 INSERT INTO seat (id, student) VALUES (5, 'Jeames');
 
 #答案
-
-#
-# select
-# update seat a
-# set a.student = case a.id % 2
-#                     when 0 then (select b.student from seat b where b.id = a.id - 1)
-#                     else (select b.student from seat b where b.id = a.id + 1) end;
-
+# 解析，if判断 select if( 1 > 0 ,1 ,0 ) ; 第二个if要判断末尾是存在 a.id + 1
+select a.id,
+       if(a.id % 2 = 0, (select b.student from seat b where b.id = a.id - 1),
+          if((select d.id from seat d where d.id = a.id + 1) is not null,
+             (select c.student from seat c where c.id = a.id + 1),
+             a.student)) as student
+from seat a;
 

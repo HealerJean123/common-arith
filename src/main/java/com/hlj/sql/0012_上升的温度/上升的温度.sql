@@ -36,12 +36,13 @@ select * from Weather;
 # 1、子查询 慢
 select a.Id
 from weather a
-where   (select b.Temperature from weather b where b.RecordDate = date_sub(a.RecordDate,INTERVAL 1 DAY) )
-            < a.Temperature;
+where (select b.Temperature from weather b where b.RecordDate = date_sub(a.RecordDate, INTERVAL 1 DAY))
+          < a.Temperature;
 
 # 2、关联查询 快
 select a.Id
-from weather a  join weather b on b.RecordDate = date_sub(a.RecordDate,INTERVAL 1 DAY)
-where  a.Temperature > b.Temperature;
+from weather a
+         join weather b on b.RecordDate = date_sub(a.RecordDate, INTERVAL 1 DAY)
+where a.Temperature > b.Temperature;
 
 
