@@ -1,34 +1,4 @@
-
-drop table if exists Employee;
-drop table if exists Department;
-create table Employee
-(
-    Id           int(11),
-    Name         varchar(20),
-    Salary       decimal(20, 0),
-    DepartmentId int(11)
-);
-
-create table Department
-(
-    Id         int(11),
-    Name       varchar(20)
-);
-
-select *  from Employee ;
-insert into employee (Id, Name, Salary, DepartmentId) values (1, 'Joe', 85000, 1);
-insert into employee (Id, Name, Salary, DepartmentId) values (2, 'Henry', 80000, 2);
-insert into employee (Id, Name, Salary, DepartmentId) values (3, 'Sam', 60000, 2);
-insert into employee (Id, Name, Salary, DepartmentId) values (4, 'Max', 90000, 1);
-insert into employee (Id, Name, Salary, DepartmentId) values (5, 'Janet', 69000, 1);
-insert into employee (Id, Name, Salary, DepartmentId) values (6, 'Randy', 85000, 1);
-insert into employee (Id, Name, Salary, DepartmentId) values (7, 'Will', 70000, 1);
-
-select *  from Department ;
-insert into department (Id, Name) values (1, 'IT');
-insert into department (Id, Name) values (2, 'Sales');
-
-
+# 1、题目：部门工资前三高的所有员工
 # Employee 表包含所有员工信息，每个员工有其对应的工号 Id，姓名 Name，工资 Salary 和部门编号 DepartmentId 。
 #
 # +----+-------+--------+--------------+
@@ -62,13 +32,40 @@ insert into department (Id, Name) values (2, 'Sales');
 # | Sales      | Henry    | 80000  |
 # | Sales      | Sam      | 60000  |
 # +------------+----------+--------+
-# 解释：
-#
-# IT 部门中，Max 获得了最高的工资，Randy 和 Joe 都拿到了第二高的工资，Will 的工资排第三。销售部门（Sales）只有两名员工，Henry 的工资最高，Sam 的工资排第二。
+
+# 2、数据准备
+drop table if exists Employee;
+create table Employee
+(
+    Id           int(11),
+    Name         varchar(20),
+    Salary       decimal(20, 0),
+    DepartmentId int(11)
+);
+drop table if exists Department;
+create table Department
+(
+    Id         int(11),
+    Name       varchar(20)
+);
+
+select *  from Employee ;
+insert into employee (Id, Name, Salary, DepartmentId) values (1, 'Joe', 85000, 1);
+insert into employee (Id, Name, Salary, DepartmentId) values (2, 'Henry', 80000, 2);
+insert into employee (Id, Name, Salary, DepartmentId) values (3, 'Sam', 60000, 2);
+insert into employee (Id, Name, Salary, DepartmentId) values (4, 'Max', 90000, 1);
+insert into employee (Id, Name, Salary, DepartmentId) values (5, 'Janet', 69000, 1);
+insert into employee (Id, Name, Salary, DepartmentId) values (6, 'Randy', 85000, 1);
+insert into employee (Id, Name, Salary, DepartmentId) values (7, 'Will', 70000, 1);
+
+select *  from Department ;
+insert into department (Id, Name) values (1, 'IT');
+insert into department (Id, Name) values (2, 'Sales');
 
 
-# 答案
-# 最重要的是后面的  < 3 注意里面的  DISTINCT（可能出现重复的人，所以用了）
+
+# 3、答案
+-- 解析：最重要的是后面的  < 3 注意里面的  DISTINCT（可能出现重复的人，所以用了）
 select D.Name as Department, E.Name as Employee, E.Salary
 from Employee E
          join Department D on D.Id = E.DepartmentId

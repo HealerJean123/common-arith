@@ -1,5 +1,6 @@
-# 求出不同班级中男生和女生的数量
+# 1、题目：求出不同班级中男生和女生的数量
 
+# 2、数据准备
 drop table if exists student;
 create table student
 (
@@ -22,7 +23,7 @@ INSERT INTO student (Id, className, sex, score) VALUES (8, 'C', '男', 90);
 INSERT INTO student (Id, className, sex, score) VALUES (9, 'C', '女', 35);
 
 
-# 答案
+# 3、答案
 select className,
        sum(case when sex = '男' then 1 else 0 end) as numOfMan,
        sum(case when sex = '女' then 1 else 0 end) as numOfWoman

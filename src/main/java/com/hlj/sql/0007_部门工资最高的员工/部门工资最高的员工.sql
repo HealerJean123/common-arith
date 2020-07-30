@@ -1,3 +1,4 @@
+# 1、题目：部门工资最高的员工
 # Employee 表包含所有员工信息，每个员工有其对应的 Id, salary 和 department Id。
 #
 # +----+-------+--------+--------------+
@@ -25,9 +26,8 @@
 # | Sales      | Henry    | 80000  |
 # +------------+----------+--------+
 
-
+# 2、数据准备
 drop table if exists Employee;
-drop table if exists Department;
 create table Employee
 (
     Id           int(11),
@@ -35,7 +35,7 @@ create table Employee
     Salary       decimal(20, 0),
     DepartmentId int(11)
 );
-
+drop table if exists Department;
 create table Department
 (
     Id         int(11),
@@ -53,7 +53,8 @@ insert into department (Id, Name) values (1, 'IT');
 insert into department (Id, Name) values (2, 'Sales');
 
 
-# 使用Join连接，保证有部门
+# 答案 1
+# 解析：使用Join连接，保证有部门
 select D.Name as Department, A.Name as Employee, A.Salary
 from Employee A
          join Department D on A.DepartmentId = D.Id
@@ -62,7 +63,7 @@ from Employee A
 where A.Salary = C.MaxSalary;
 
 
-# 下面着这种也可以
+# 答案2
 SELECT D.Name AS 'Department',
        E.Name AS 'Employee',
        E.Salary

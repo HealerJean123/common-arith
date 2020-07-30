@@ -1,5 +1,6 @@
-# 求男生的平均分大于女的班级
+# 1、题目 求男生的平均分大于女的班级
 
+# 2、数据准备
 drop table if exists student;
 create table student
 (
@@ -23,10 +24,10 @@ INSERT INTO student (Id, className, sex, score) VALUES (9, 'C', '女', 35);
 
 
 
-# 答案
+# 3、答案
 select className
 from student
 group by className
-having avg(case sex when '男' then score  end) > avg(case sex when '女' then score end);
+having avg(case sex when '男' then score end) > avg(case sex when '女' then score end);
 
 

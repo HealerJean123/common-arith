@@ -1,3 +1,4 @@
+# 1、题目 连续出现的数字
 # 编写一个 SQL 查询，查找所有至少连续出现三次的数字。
 #
 # +----+-----+
@@ -19,6 +20,7 @@
 # | 1               |
 # +-----------------+
 
+# 2、数据准备
 drop table  if exists  Logs  ;
 create table Logs
 (
@@ -27,7 +29,7 @@ create table Logs
     Num   int(11)
 );
 
-truncate Logs ;
+select * from Logs ;
 insert into logs (Id, Num) values (1, 1);
 insert into logs (Id, Num) values (2, 1);
 insert into logs (Id, Num) values (3, 1);
@@ -36,12 +38,7 @@ insert into logs (Id, Num) values (5, 1);
 insert into logs (Id, Num) values (6, 2);
 insert into logs (Id, Num) values (7, 2);
 
-
-
-select * from Logs ;
-
-
-# 防止出现4个的情况，num重复
+# 3、答案
 select distinct (a.Num) as ConsecutiveNums
 from logs a
          join logs b on a.Num = b.Num

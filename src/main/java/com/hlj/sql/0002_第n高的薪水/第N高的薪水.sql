@@ -10,7 +10,6 @@ select * from employee;
 insert into employee (id, salary) values (1, 100);
 insert into employee (id, salary) values (2, 200);
 insert into employee (id, salary) values (3, 300);
-select * from employee;
 
 # 编写一个 SQL 查询，获取 Employee 表中第 n 高的薪水（Salary）。
 #

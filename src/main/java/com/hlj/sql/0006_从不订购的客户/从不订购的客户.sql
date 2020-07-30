@@ -1,3 +1,4 @@
+# 1、题目：从不订购的客户
 # 某网站包含两个表，Customers 表和 Orders 表。编写一个 SQL 查询，找出所有从不订购任何东西的客户。
 
 # Customers 表：
@@ -27,23 +28,22 @@
 # | Max       |
 # +-----------+
 
-
+# 2、数据准备
 drop table if exists  Customers  ;
-drop table if exists  Orders   ;
-
-
 create table Customers(
     Id int(11),
     Name varchar(20)
 );
-
+drop table if exists  Orders   ;
 create table Orders(
     Id int(11),
     CustomerId int(11)
 );
 
-# not in
-select C.Name AS  Customers   from Customers C where C.Id not in (select distinct (O.CustomerId) from Orders O);
+# 3、答案
+select C.Name AS Customers
+from Customers C
+where C.Id not in (select distinct (O.CustomerId) from Orders O);
 
 
 

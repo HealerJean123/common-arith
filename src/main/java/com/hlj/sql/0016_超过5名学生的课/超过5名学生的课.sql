@@ -1,3 +1,4 @@
+# 1、题目：超过5名学生的课
 # 有一个courses 表 ，有: student (学生) 和 class (课程)。
 #
 # 请列出所有超过或等于5名学生的课。
@@ -25,6 +26,7 @@
 # | Math    |
 # +---------+
 
+# 2、数据准备
 drop table if exists courses;
 create table courses (
     student varchar(32),
@@ -42,6 +44,6 @@ insert into courses(student, class) values ('H', 'Math');
 insert into courses(student, class) values ('I', 'Math');
 
 
-# 答案
-# 解析，可能会有重复的  student 所以使用了 distinct
+# 3、答案
+-- 解析，可能会有重复的  student 所以使用了 distinct
 select class from courses group by class having count(distinct student) >= 5 ;
