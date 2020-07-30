@@ -24,10 +24,5 @@ INSERT INTO student (Id, className, sex, score) VALUES (9, 'C', '女', 35);
 
 
 
-# 3、答案
-select className
-from student
-group by className
-having avg(case sex when '男' then score end) > avg(case sex when '女' then score end);
 
 
