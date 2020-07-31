@@ -64,7 +64,13 @@ select * from Vote;;
 
 # 答案
 # 1、答案1
-select  c.Name   from Candidate c join  Vote v on c.id = v.CandidateId  group by c.Name order by count(*)  desc  limit 1;
+select c.Name
+from Candidate c
+        left join Vote v on c.id = v.CandidateId
+group by c.Name
+order by count(*) desc
+limit 1;
+
 
 # 2、答案2
 select Name

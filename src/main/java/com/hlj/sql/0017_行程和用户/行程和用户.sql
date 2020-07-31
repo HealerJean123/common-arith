@@ -88,9 +88,9 @@ select * from Users;
 -- 解析
 -- 1，先找到内在条件
 -- 某个日期 被司机或乘客取消的非禁止用户生成的订单数量
-select count(*) from Trips a left join Users  u on  u.Users_Id = a.Client_Id   where   a.Request_at = '2013-10-03' and  u.Banned = 'No';
+select count(*) from Trips a  join Users  u on  u.Users_Id = a.Client_Id   where   a.Request_at = '2013-10-03' and  u.Banned = 'No';
 -- 某个日期 非禁止用户生成的订单总数
-select count(*) from Trips a left join Users  u on  u.Users_Id = a.Client_Id   where a.Status in ('cancelled_by_driver',  'cancelled_by_client')   and a.Request_at = '2013-10-03' and  u.Banned = 'No';
+select count(*) from Trips a  join Users  u on  u.Users_Id = a.Client_Id   where a.Status in ('cancelled_by_driver',  'cancelled_by_client')   and a.Request_at = '2013-10-03' and  u.Banned = 'No';
 
 -- 2、日期分组和条件筛选
 select t.Request_at as Day
@@ -100,18 +100,20 @@ group by t.Request_at;
 
 
 -- 3、select条件中传入日期得出结果
-select t.Request_at                                                    as Day,
+select t.Request_at as Day,
        (ROUND((select count(*)
                from Trips a
-                        left join Users u on u.Users_Id = a.Client_Id
+                        join Users u on u.Users_Id = a.Client_Id
                where a.Status in ('cancelled_by_driver', 'cancelled_by_client')
                  and a.Request_at = t.Request_at
                  and u.Banned = 'No') / (select count(*)
-                                           from Trips a
-                                                    left join Users u on u.Users_Id = a.Client_Id
-                                           where a.Request_at = t.Request_at
-                                             and u.Banned = 'No'), 2)) as 'Cancellation Rate'
-from Trips t WHERE Request_at BETWEEN '2013-10-01' and '2013-10-03'
+                                         from Trips a
+                                                  join Users u on u.Users_Id = a.Client_Id
+                                         where a.Request_at = t.Request_at
+                                           and u.Banned = 'No'),
+              2))   as 'Cancellation Rate'
+from Trips t
+WHERE Request_at BETWEEN '2013-10-01' and '2013-10-03'
 group by t.Request_at;
 
 

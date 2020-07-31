@@ -51,8 +51,7 @@ insert into Scores (Id, Score) values (6, 3.65);
 select A.Score as score,
        (select COUNT(distinct B.Score) from Scores B where B.Score >= A.Score) as Rank
 from Scores A
-order by Score
-desc;
+order by Score desc;
 
 
 

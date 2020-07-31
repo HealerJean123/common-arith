@@ -42,6 +42,7 @@ select a.Id
 from weather a
 where (select b.Temperature from weather b where b.RecordDate = date_sub(a.RecordDate, INTERVAL 1 DAY))
           < a.Temperature;
+
 # 答案2
 -- 解析、关联查询 快
 select a.Id
