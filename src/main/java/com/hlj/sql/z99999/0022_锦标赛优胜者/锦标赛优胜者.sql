@@ -105,58 +105,64 @@ INSERT INTO matches (match_id, first_player, second_player, first_score, second_
 INSERT INTO matches (match_id, first_player, second_player, first_score, second_score) VALUES (5, 35, 50, 1, 1);
 
 
-select p2.group_id, p2.player_id from Players p2 left join Matches m2 on m2.first_player = p2.player_id
- join (
-select  p1.group_id, max(m1.first_score) maxScore   from Players p1  join Matches m1 on m1.first_player = p1.player_id  group by group_id
-) m on p2.group_id = m.group_id where m2.first_score = m.maxScore ;
+# 答案
+# 答案1
+-- 1、获取所有的选手所在组以及得分情况
+select p1.group_id, p1.player_id, m1.first_score as score
+from Players p1
+         join Matches m1 on m1.first_player = p1.player_id
+union
+select p2.group_id, p2.player_id, m2.second_score as score
+from Players p2
+         join Matches m2 on m2.second_player = p2.player_id
+;
 
-
-
+-- 2、关键字需要包装一下
 select m.group_id, m.player_id,m.score
 from (
          select p1.group_id, p1.player_id, m1.first_score as score
          from Players p1
                   join Matches m1 on m1.first_player = p1.player_id
          union
-         select p2.group_id, p2.player_id, m2.first_score as score
+         select p2.group_id, p2.player_id, m2.second_score as score
          from Players p2
                   join Matches m2 on m2.second_player = p2.player_id
-     ) m group by  group_id;
+     ) m order by group_id;
+
+-- 3、通过组分组，找出每组中最大的得分
+select m.group_id, max(score)
+from (
+         select p1.group_id, m1.first_score as score
+         from Players p1
+                  join Matches m1 on m1.first_player = p1.player_id
+         union
+         select p2.group_id, m2.second_score as score
+         from Players p2
+                  join Matches m2 on m2.second_player = p2.player_id
+     ) m group by group_id;
 
 
 
-select * from Players p3    join (
-select m.group_id, max(m.score) as score
+select m1.group_id, m1.player_id, m1.score
 from (
          select p1.group_id, p1.player_id, m1.first_score as score
          from Players p1
                   join Matches m1 on m1.first_player = p1.player_id
          union
-         select p2.group_id, p2.player_id, m2.first_score as score
+         select p2.group_id, p2.player_id, m2.second_score as score
          from Players p2
                   join Matches m2 on m2.second_player = p2.player_id
-     ) m group by  group_id
-)f on f.group_id = p3.group_id;
-
-
-
-SELECT group_id, player_idorder by group_id, score desc , player_id
-FROM (
-         SELECT group_id, player_id, SUM(score) AS score
-         FROM (
-                  -- 每个用户总的 first_score
-                  SELECT Players.group_id, Players.player_id, SUM(Matches.first_score) AS score
-                  FROM Players JOIN Matches ON Players.player_id = Matches.first_player
-                  GROUP BY Players.player_id
-
-                  UNION ALL
-
-                  -- 每个用户总的 second_score
-                  SELECT Players.group_id, Players.player_id, SUM(Matches.second_score) AS score
-                  FROM Players JOIN Matches ON Players.player_id = Matches.second_player
-                  GROUP BY Players.player_id
-              ) s
-         GROUP BY player_id
-         ORDER BY score DESC, player_id
-     ) result
-GROUP BY group_id;
+     ) m1
+         join (
+    select m.group_id, max(score) as score
+    from (
+             select p1.group_id, m1.first_score as score
+             from Players p1
+                      join Matches m1 on m1.first_player = p1.player_id
+             union
+             select p2.group_id, m2.second_score as score
+             from Players p2
+                      join Matches m2 on m2.second_player = p2.player_id
+         ) m
+    group by group_id
+) m2 on m1.group_id = m2.group_id and m1.score = m2.score;

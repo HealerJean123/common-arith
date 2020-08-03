@@ -30,7 +30,7 @@
 # +------+------------+-----------+
 
 # 2、数据准备
-drop table stadium;
+drop table if exists stadium;
 create table stadium(
                         id int,
                         visit_date date,
@@ -51,24 +51,34 @@ INSERT INTO stadium (id, visit_date, people) VALUES (8, '2017-01-08', 188);
 # 答案
 # 答案1
 -- 解析：join方式
-select * from
 (select a.*
 -- t1 t2 t3
  from stadium a
           join stadium b on b.id = a.id + 1
-          join stadium c on c.id = a.id + 2 where a.people >= 100 and b.people >= 100 and c.people >= 100
+          join stadium c on c.id = a.id + 2
+ where a.people >= 100
+   and b.people >= 100
+   and c.people >= 100
+)
  union
+(
 -- t2 t1 t3
- select a.*
- from stadium a
-          join stadium b on b.id = a.id - 1
-          join stadium c on c.id = a.id + 1 where a.people >= 100 and b.people >= 100 and c.people >= 100
+    select a.*
+    from stadium a
+             join stadium b on b.id = a.id - 1
+             join stadium c on c.id = a.id + 1
+    where a.people >= 100
+      and b.people >= 100
+      and c.people >= 100
+)
  union
+(
 -- t2 t3 t1
  select a.*
  from stadium a
           join stadium b on b.id = a.id - 2
-          join stadium c on c.id = a.id - 1 where a.people >= 100 and b.people >= 100 and c.people >= 100) m
+          join stadium c on c.id = a.id - 1 where a.people >= 100 and b.people >= 100 and c.people >= 100
+    )
 order by id
 ;
 
