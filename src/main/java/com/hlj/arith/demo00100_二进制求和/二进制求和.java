@@ -28,7 +28,6 @@ public class 二进制求和 {
      * 我的的初始代码
      */
     public String addBinary2(String a, String b) {
-        int[] res = new int[a.length()+ b.length()];
         int aIdx = a.length()-1 ;
         int bIdx = b.length()-1;
         int temp = 0;

@@ -123,6 +123,8 @@ from (
                   join Matches m2 on m2.second_player = p2.player_id
      ) m group by  group_id;
 
+
+
 select * from Players p3    join (
 select m.group_id, max(m.score) as score
 from (
@@ -133,8 +135,8 @@ from (
          select p2.group_id, p2.player_id, m2.first_score as score
          from Players p2
                   join Matches m2 on m2.second_player = p2.player_id
-     ) m group by  group_id 
-)f on f.group_id = p3.group_id
+     ) m group by  group_id
+)f on f.group_id = p3.group_id;
 
 
 
@@ -157,4 +159,4 @@ FROM (
          GROUP BY player_id
          ORDER BY score DESC, player_id
      ) result
-GROUP BY group_id
+GROUP BY group_id;
