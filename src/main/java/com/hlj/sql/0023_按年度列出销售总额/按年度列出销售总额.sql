@@ -111,7 +111,7 @@ select date('2020-01-01');
         product_name,
         '2018'                                                         as report_year,
         if(period_start <= '2018-12-31', (datediff(if(period_end > '2018-12-31', '2018-12-31', period_end),
-                                                   if(period_start > '2018-01-01', period_start, '2018-01-01')) +
+                                                   if(period_start < '2018-01-01', '2018-01-01' , period_start)) +
                                           1) * average_daily_sales, 0) as total_amount
  from Product
           join Sales on Sales.product_id = Product.product_id
@@ -136,7 +136,7 @@ union
            product_name,
            '2020'                                                         as report_year,
            if(period_start <= '2020-12-31', (datediff(if(period_end > '2020-12-31', '2020-12-31', period_end),
-                                                      if(period_start > '2020-01-01', period_start, '2020-01-01')) +
+                                                      if(period_start < '2020-01-01','2020-01-01', period_start)) +
                                              1) * average_daily_sales, 0) as total_amount
     from Product
              join Sales on Sales.product_id = Product.product_id

@@ -95,3 +95,51 @@ INSERT INTO matches (match_id, host_team, guest_team, host_goals, guest_goals) V
 INSERT INTO matches (match_id, host_team, guest_team, host_goals, guest_goals) VALUES (5, 50, 30, 1, 0);
 select * from Matches;
 
+select * from Teams;
+
+--
+select t1.team_id,
+       t1.team_name,
+       ifnull((select sum(num_points)
+        from (
+                 select sum(if(m1.host_goals > m1.guest_goals, 3,
+                               if(m1.host_goals = m1.guest_goals, 1, 0))) as num_points
+                 from Matches m1
+                 where m1.host_team = t1.team_id
+                 union
+                 select sum(if(m1.host_goals < m1.guest_goals, 3,
+                               if(m1.host_goals = m1.guest_goals, 1, 0))) as num_points
+                 from Matches m1
+                 where m1.guest_team = t1.team_id
+             ) a) , 0
+       ) as num_points
+from Teams t1 order by num_points desc ;
+
+
+
+select t.team_id, t.team_name, ifnull(score, 0) num_points
+from teams t
+         left join (
+    select team_id, sum(score) score
+    from (
+             select host_team as team_id,
+                    sum(case
+                            when host_goals > guest_goals then 3
+                            when host_goals < guest_goals then 0
+                            else 1
+                        end)     score
+             from matches
+             group by host_team
+             union all
+             select guest_team as team_id,
+                    sum(case
+                            when host_goals > guest_goals then 0
+                            when host_goals < guest_goals then 3
+                            else 1
+                        end)      score
+             from matches
+             group by guest_team
+         ) b
+    group by team_id
+) a on t.team_id = a.team_id
+order by num_points desc, t.team_id;
