@@ -20,6 +20,7 @@ import java.util.Queue;
          9  20
          /  \
          15   7
+        返回它的最大深度 3 。
 解题思路：层序遍历
 */
 public class 二叉树的最大深度 {
