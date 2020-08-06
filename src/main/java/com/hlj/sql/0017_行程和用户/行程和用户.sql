@@ -88,51 +88,29 @@ select * from Users;
 -- 解析
 -- 1，先找到内在条件
 -- 某个日期 被司机或乘客取消的非禁止用户生成的订单数量
-select count(*) from Trips a  join Users  u on  u.Users_Id = a.Client_Id   where   a.Request_at = '2013-10-03' and  u.Banned = 'No';
 -- 某个日期 非禁止用户生成的订单总数
-select count(*) from Trips a  join Users  u on  u.Users_Id = a.Client_Id   where a.Status in ('cancelled_by_driver',  'cancelled_by_client')   and a.Request_at = '2013-10-03' and  u.Banned = 'No';
-
--- 2、日期分组和条件筛选
-select t.Request_at as Day
-from Trips t
-WHERE Request_at BETWEEN '2013-10-01' and '2013-10-03'
-group by t.Request_at;
-
-
--- 3、select条件中传入日期得出结果
-select t.Request_at as Day,
-       (ROUND((select count(*)
-               from Trips a
-                        join Users u on u.Users_Id = a.Client_Id
-               where a.Status in ('cancelled_by_driver', 'cancelled_by_client')
-                 and a.Request_at = t.Request_at
-                 and u.Banned = 'No') / (select count(*)
-                                         from Trips a
-                                                  join Users u on u.Users_Id = a.Client_Id
-                                         where a.Request_at = t.Request_at
-                                           and u.Banned = 'No'),
-              2))   as 'Cancellation Rate'
-from Trips t
-WHERE Request_at BETWEEN '2013-10-01' and '2013-10-03'
-group by t.Request_at;
+select count(*)
+from Trips a
+         join Users u on u.Users_Id = a.Client_Id
+where a.Status in ('cancelled_by_driver', 'cancelled_by_client')
+  and a.Request_at = '2013-10-03'
+  and u.Banned = 'No';
 
 
 
 
-
-
-# 答案2
+# 答案
 # 解析：内连接中 进行and
-SELECT t.request_at    as 'Day',
-       ROUND(
-                   SUM(
-                       IF((t.Status != 'completed'), 1, 0))
+select t.request_at    as 'day',
+       round(
+                   sum(
+                       if((t.status != 'completed'), 1, 0))
 
-                       / COUNT(t.Status),
+                       / count(t.status),
            2)
-           as 'Cancellation Rate'
-FROM trips t
-         JOIN users u1 ON (t.client_id = u1.users_id AND u1.banned = 'No')
-         JOIN users u2 ON (t.driver_id = u2.users_id AND u2.banned = 'No')
-WHERE t.request_at BETWEEN '2013-10-01' AND '2013-10-03'
-GROUP BY t.request_at ;
+           as 'cancellation rate'
+from trips t
+         join users u1 on (t.client_id = u1.users_id and u1.banned = 'no')
+         join users u2 on (t.driver_id = u2.users_id and u2.banned = 'no')
+where t.request_at between '2013-10-01' and '2013-10-03'
+group by t.request_at ;

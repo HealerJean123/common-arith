@@ -94,10 +94,16 @@ select * from Orders;
 # 答案
 -- 解析
 -- 1、先筛选符合基本条件的
-select b.book_id, b.Name from Books b where b.available_from < date_sub('2019-06-23', INTERVAL 1  MONTH);
+select b.book_id, b.Name
+from Books b
+where b.available_from < date_sub('2019-06-23', INTERVAL 1 MONTH);
 
 -- 2、根据书籍分组选择 订单量的 (注意反向思考，如果1年内没有订单将不会出现在订单表中，这样就很难join关联查)
-select o.book_id from Orders o  where o.dispatch_date > date_sub('2019-06-23', INTERVAL 1 YEAR) group by o.book_id having sum(quantity) >= 10 ;
+select o.book_id
+from Orders o
+where o.dispatch_date > date_sub('2019-06-23', INTERVAL 1 YEAR)
+group by o.book_id
+having sum(quantity) >= 10;
 
 -- 3、使用left join连接，因为可能会有一个订单都没有的书籍，所以使用left join
 select b.book_id, b.Name

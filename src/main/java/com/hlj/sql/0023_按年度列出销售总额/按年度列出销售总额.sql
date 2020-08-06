@@ -106,7 +106,7 @@ select s.product_id   from Sales s;
 
 select date('2020-01-01');
 
-# 如果起始日期小于等于2019-01-01， 此时如果截止日期比 2018-12-31大的话，则end就是 2018-12-31
+-- 3、如果起始日期小于等于2019-01-01， 此时如果截止日期比 2018-12-31大的话，则end就是 2018-12-31
 (select Sales.product_id,
         product_name,
         '2018'                                                         as report_year,

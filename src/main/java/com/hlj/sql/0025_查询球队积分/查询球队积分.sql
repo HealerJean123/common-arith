@@ -95,51 +95,75 @@ INSERT INTO matches (match_id, host_team, guest_team, host_goals, guest_goals) V
 INSERT INTO matches (match_id, host_team, guest_team, host_goals, guest_goals) VALUES (5, 50, 30, 1, 0);
 select * from Matches;
 
-select * from Teams;
-
---
-select t1.team_id,
-       t1.team_name,
-       ifnull((select sum(num_points)
-        from (
-                 select sum(if(m1.host_goals > m1.guest_goals, 3,
-                               if(m1.host_goals = m1.guest_goals, 1, 0))) as num_points
-                 from Matches m1
-                 where m1.host_team = t1.team_id
-                 union
-                 select sum(if(m1.host_goals < m1.guest_goals, 3,
-                               if(m1.host_goals = m1.guest_goals, 1, 0))) as num_points
-                 from Matches m1
-                 where m1.guest_team = t1.team_id
-             ) a) , 0
-       ) as num_points
-from Teams t1 order by num_points desc ;
 
 
+# 3、答案
+-- 解析
+-- 1、根据比赛的球队分组，然后计算每个球队的得分
+(select host_team           as team_id,
+       sum(case
+               when (host_goals > guest_goals) then 3
+               when host_goals = guest_goals then 1
+               else 0 end) as score
+from Matches
+group by host_team)
+union all
+(select guest_team          as team_id,
+    sum(case
+    when (host_goals > guest_goals) then 0
+    when host_goals = guest_goals then 1
+    else 3 end) as score
+from Matches
+group by guest_team);
 
-select t.team_id, t.team_name, ifnull(score, 0) num_points
-from teams t
+
+
+-- 2、将关联起来的球队再进行分组，这个时候的分组，还是以球队进行分组的
+select team_id, sum(score) as num_points
+from (
+         (select host_team           as team_id,
+                 sum(case
+                         when (host_goals > guest_goals) then 3
+                         when host_goals = guest_goals then 1
+                         else 0 end) as score
+          from Matches
+          group by host_team)
+         union all
+         (select guest_team          as team_id,
+                 sum(case
+                         when (host_goals > guest_goals) then 0
+                         when host_goals = guest_goals then 1
+                         else 3 end) as score
+          from Matches
+          group by guest_team)
+     ) m
+group by team_id;
+
+
+
+-- 3、left join 查询
+select t.team_id, t.team_name, ifnull(num_points, 0) as num_points
+from Teams t
          left join (
-    select team_id, sum(score) score
+    select team_id, sum(score) as num_points
     from (
-             select host_team as team_id,
-                    sum(case
-                            when host_goals > guest_goals then 3
-                            when host_goals < guest_goals then 0
-                            else 1
-                        end)     score
-             from matches
-             group by host_team
+             (select host_team           as team_id,
+                     sum(case
+                             when (host_goals > guest_goals) then 3
+                             when host_goals = guest_goals then 1
+                             else 0 end) as score
+              from Matches
+              group by host_team)
              union all
-             select guest_team as team_id,
-                    sum(case
-                            when host_goals > guest_goals then 0
-                            when host_goals < guest_goals then 3
-                            else 1
-                        end)      score
-             from matches
-             group by guest_team
-         ) b
+             (select guest_team          as team_id,
+                     sum(case
+                             when (host_goals > guest_goals) then 0
+                             when host_goals = guest_goals then 1
+                             else 3 end) as score
+              from Matches
+              group by guest_team)
+         ) m
     group by team_id
-) a on t.team_id = a.team_id
-order by num_points desc, t.team_id;
+) n on t.team_id = n.team_id
+order by num_points desc, team_id
+
