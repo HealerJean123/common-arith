@@ -12,6 +12,7 @@ import sun.nio.ch.IOUtil;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +28,7 @@ public class InitToDb {
         JsonNode headersNode = root.get("headers");
         JsonNode allRowsNode = root.get("rows");
         Iterator<String> keys = headersNode.fieldNames();
+        Connection connection = JdbcUtils.getConnection();
         while (keys.hasNext()) {
             String key = keys.next();
             JsonNode rowsNode = allRowsNode.get(key);
@@ -35,8 +37,9 @@ public class InitToDb {
                 List<String> objects = JsonUtils.jsonToArray(rowNode.toString(), String.class);
                 String val = objects.stream().map(item -> "'" + item + "'").collect(Collectors.joining(","));
                 String sql = "insert into " + key + " values ( " + val + ")";
-                JdbcUtils.insert(sql);
+                JdbcUtils.insert(connection, sql);
             }
         }
+        JdbcUtils.closeConnection(connection);
     }
 }

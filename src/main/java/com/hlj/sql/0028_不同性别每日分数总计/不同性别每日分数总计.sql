@@ -110,5 +110,3 @@ from Scores s1
 group by s1.day, s1.gender
 order by s1.gender, s1.day;
 ;
-
-

@@ -17,9 +17,7 @@ import java.util.List;
 public class JdbcUtils {
 
 
-
-    public static int insert(String dbSql) {
-        Connection conn = getConnection();
+    public static int insert(Connection conn,  String dbSql) {
         PreparedStatement ps = null;
         int n = 0 ;
         try {
@@ -38,10 +36,9 @@ public class JdbcUtils {
      * 获取字段相关类:
      * 使用完记得关闭连接
      */
-    public static ResultSetMetaData getResultSetMetaData(String tableName) {
+    public static ResultSetMetaData getResultSetMetaData(Connection connection, String tableName) {
         PreparedStatement preparedStatement = null;
         ResultSetMetaData resultSetMetaData = null;
-        Connection connection = getConnection();
         try {
             preparedStatement = connection.prepareStatement("select * from " + tableName + " where 1=2");
             resultSetMetaData = preparedStatement.executeQuery().getMetaData();
@@ -49,7 +46,6 @@ public class JdbcUtils {
             log.error("数据库连接异常", e);
         } finally {
             closePreparedStatement(preparedStatement);
-            closeConnection(connection);
         }
         return resultSetMetaData;
     }
@@ -58,9 +54,8 @@ public class JdbcUtils {
     /**
      * 获取当前数据库下的所有表名称
      */
-    public static List<String> getAllTableName() {
+    public static List<String> getAllTableName(Connection connection) {
         List<String> tables = new ArrayList();
-        Connection connection = getConnection();
         Statement statement = null;
         ResultSet resultSet = null;
         try {
@@ -86,8 +81,7 @@ public class JdbcUtils {
     /**
      * 获得某表的建表语句
      */
-    public static String getCreateTableDDL(String tableName) {
-        Connection connection = getConnection();
+    public static String getCreateTableDDL(Connection connection, String tableName) {
         Statement statement = null;
         ResultSet resultSet = null;
         String createDDLSql = null;
@@ -110,8 +104,8 @@ public class JdbcUtils {
     /**
      * 获得某表的注释
      */
-    public static String getTableCommnet(String tableName) {
-        String creatDDLSql = getCreateTableDDL(tableName);
+    public static String getTableCommnet(Connection connection, String tableName) {
+        String creatDDLSql = getCreateTableDDL(connection, tableName);
         String comment = null;
         int index = creatDDLSql.indexOf("COMMENT='");
         if (index < 0) {
@@ -126,9 +120,8 @@ public class JdbcUtils {
     /**
      * 获取表中字段的所有注释
      */
-    public static List<String> getColumnComments(String tableName) {
+    public static List<String> getColumnComments(Connection connection,String tableName) {
         //与数据库的连接
-        Connection connection = getConnection();
         PreparedStatement preparedStatement = null;
         String tableSql = "select * from " + tableName;
         //列名注释集合
