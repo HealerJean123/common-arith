@@ -110,7 +110,8 @@ count(f3.activity) > (select min(m2.count_ac) from  (select f2.activity, count(f
 
 -- 2、学习了 any
 # 定义两个变量记录最多和最少的，然后筛选
-select activity as ACTIVITY
+select activity as ACTIVITY,
+    count(*)
 from friends
 group by activity
 having count(*) > any ( select count(*) from friends  group by activity)
