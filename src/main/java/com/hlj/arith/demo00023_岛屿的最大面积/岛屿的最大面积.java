@@ -24,38 +24,37 @@ public class 岛屿的最大面积 {
                 {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}
         };
 
-        int aLength = array.length;
-        int bLength = array[0].length;
+
+    }
+
+    public int maxAreaOfIsland(int[][] grid) {
         int bigSize = 0;
-        for (int i = 0; i < aLength; i++) {
-            for (int j = 0; j < bLength; j++) {
-                //当为0或者2的时候就不会进入
-                if (array[i][j] == 1) {
-                    bigSize = Math.max(kuosan(i, j, array), bigSize);
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                //当为0的时候就不会进入
+                if (grid[i][j] == 1) {
+                    bigSize = Math.max(dfs(i, j, grid), bigSize);
                 }
             }
         }
-
-        System.out.println("最大岛屿为：" + bigSize);
+        return bigSize;
     }
 
     /**
      * 从某个节点开始扩散
      */
-    public int kuosan(int i, int j, int[][] array) {
-        int aLength = array.length;
-        int bLength = array[0].length;
-        if (i >= 0 && i < aLength &&
-            j >= 0 && j < bLength &&
-            array[i][j] == 1) {
-
+    public int dfs(int i, int j, int[][] grid) {
+        if (i >= 0 && i < grid.length &&
+            j >= 0 && j < grid[0].length &&
+            grid[i][j] == 1) {
             //防止重复执行 kuosan方法。防止重复执行 kuosan方法。
-            array[i][j] = 2;
+            grid[i][j] = 0;
+
             //每次进入就 + 1
-            int num = kuosan(i - 1, j, array) +
-                    kuosan(i + 1, j, array) +
-                    kuosan(i, j - 1, array) +
-                    kuosan(i, j + 1, array) +
+            int num = dfs(i - 1, j, grid) +
+                    dfs(i + 1, j, grid) +
+                    dfs(i, j - 1, grid) +
+                    dfs(i, j + 1, grid) +
                     1;
             return num;
         }
