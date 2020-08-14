@@ -1,10 +1,8 @@
-package com.hlj.arith.demo00133_合并区间;
+package com.hlj.arith.demo00134_合并区间;
 
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
 作者：HealerJean
