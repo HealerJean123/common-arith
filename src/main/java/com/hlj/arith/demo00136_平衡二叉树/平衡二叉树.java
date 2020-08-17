@@ -38,6 +38,7 @@ public class 平衡二叉树 {
         System.out.println(isBalanced(initTreeNode()));
     }
 
+    /** 方法1 使用全局变量 */
     boolean flag  = true;
     public boolean isBalanced(TreeNode root) {
         df(root);
@@ -58,7 +59,8 @@ public class 平衡二叉树 {
     }
 
 
-    public boolean isBalanced4(TreeNode root) {
+    /** 方法2  不使用全局变量 （判断高度差以及每棵树都是平衡二叉树）*/
+    public boolean isBalanced2(TreeNode root) {
         if (root == null) {
             return true;
         } else {
@@ -66,6 +68,7 @@ public class 平衡二叉树 {
         }
     }
 
+    /** 计算高度差 */
     public int height(TreeNode root) {
         if (root == null) {
             return 0;
