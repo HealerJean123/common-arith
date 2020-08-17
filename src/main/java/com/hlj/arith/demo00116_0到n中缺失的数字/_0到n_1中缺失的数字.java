@@ -1,4 +1,4 @@
-package com.hlj.arith.demo00116_0到n1中缺失的数字;
+package com.hlj.arith.demo00116_0到n中缺失的数字;
 
 import org.junit.Test;
 

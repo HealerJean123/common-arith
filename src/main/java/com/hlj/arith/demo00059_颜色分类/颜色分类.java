@@ -30,7 +30,6 @@ public class 颜色分类 {
         while (index <= j) {
             if (nums[index] == 0) {
                 // 交换第 p0个和第curr个元素
-                // i++
                 tmp = nums[i];
                 nums[i] = nums[index];
                 nums[index] = tmp;

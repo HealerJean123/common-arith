@@ -33,7 +33,7 @@ import java.util.Map;
          0 1 0
          1 2 1
 
-解题思路：
+解题思路：从四面八方进攻，左上角和左下角同时出发
 */
 public class _01矩阵 {
 
