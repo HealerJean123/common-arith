@@ -1,6 +1,5 @@
-package com.hlj.arith.demo00136_平衡二叉树;
+package com.hlj.arith.demo00136_判断平衡二叉树;
 
-import com.hlj.arith.z_common.treeNode.TreeNodeResources;
 import org.junit.Test;
 
 /**
@@ -30,7 +29,7 @@ import org.junit.Test;
 
 解题思路：
 */
-public class 平衡二叉树 {
+public class 判断平衡二叉树 {
 
 
     @Test
