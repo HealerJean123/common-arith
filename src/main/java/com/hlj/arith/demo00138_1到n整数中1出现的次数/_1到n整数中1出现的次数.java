@@ -15,6 +15,7 @@ public class _1到n整数中1出现的次数 {
         System.out.println(countDigitOne(3412));
     }
 
+
     public int countDigitOne(int n) {
         //digit = 1 表示个位
         int digit = 1, res = 0;
@@ -24,6 +25,9 @@ public class _1到n整数中1出现的次数 {
         int cur = n % 10;
         //low：低位为0
         int low = 0;
+        /** high ==0 的时候可能是首次进入，name这个时候cur就不能等于0 */
+        /** cur ==0 的时候可能是首次进入hign就不能等于0 */
+        /** 也就是说必须有一个不等于0 */
         while (high != 0 || cur != 0) {
             if (cur == 0) {
                 res += high * digit;
