@@ -36,7 +36,7 @@ public class 回文子串 {
             res++;
         }
 
-        for (int j = 0; j < s.length(); j++) {
+        for (int j = 1; j < s.length(); j++) {
             for (int i = j - 1; i >= 0; i--) {
                 if (s.charAt(i) == s.charAt(j)){
                     if (j-i < 2 ){
