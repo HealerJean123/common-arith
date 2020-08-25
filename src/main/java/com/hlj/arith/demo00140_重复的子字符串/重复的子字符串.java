@@ -32,7 +32,7 @@ public class 重复的子字符串 {
         int len = s.length();
         //i 重复的长度，最长只能为len的一半
         for (int i = 1; i * 2 <= len; ++i) {
-            //当等于0的时候才有可能存在
+            //当等于0的时候才有可能存在,肯定是i长度的整数倍数
             if (len % i == 0) {
                 boolean match = true;
                 //j 试探能够到字符串的尾部，所以 j<len
