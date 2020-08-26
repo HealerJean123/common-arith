@@ -38,9 +38,14 @@ public class _01矩阵 {
 
     @Test
     public void test() {
+        // int[][] matrix = {
+        //         {0, 0, 0},
+        //         {0, 1, 0},
+        //         {1, 1, 1}
+        // };
         int[][] matrix = {
-                {0, 0, 0},
-                {0, 1, 0},
+                {1, 1, 1},
+                {1, 1, 1},
                 {1, 1, 1}
         };
         updateMatrix(matrix);
@@ -51,7 +56,7 @@ public class _01矩阵 {
         int[][] dp = new int[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                //如果当前有数据则相对来说是比较大的
+                //如果当前有数据则相对来说是比较大的,10000（如果都为1的话，则没有意义，所以后面这个值也就是当无意义的时候设定值）
                 dp[i][j] = matrix[i][j] == 0 ? 0 : 10000;
             }
         }

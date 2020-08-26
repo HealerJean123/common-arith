@@ -45,6 +45,7 @@ public class 二叉树的最小深度 {
         if (root.right != null) {
             min = Math.min(minDepth(root.right), min);
         }
+        //最后加上自身
         return min + 1;
     }
 
