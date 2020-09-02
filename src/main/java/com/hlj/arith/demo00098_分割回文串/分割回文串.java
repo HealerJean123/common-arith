@@ -1,8 +1,6 @@
 package com.hlj.arith.demo00098_分割回文串;
 
 
-import lombok.extern.slf4j.Slf4j;
-import lombok.val;
 import org.junit.Test;
 
 import java.util.ArrayList;

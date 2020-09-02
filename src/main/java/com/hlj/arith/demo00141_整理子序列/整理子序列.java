@@ -38,6 +38,10 @@ public class 整理子序列 {
     }
 
     public void dfs(int index, int[] nums, List<List<Integer>> res, LinkedList<Integer> linkedList, boolean[] use) {
+        if (linkedList.size() > 1 ) {
+            res.add(new ArrayList<>(linkedList));
+        }
+
         for (int i = index; i < nums.length; i++) {
             if (i > 0 && nums[i] == nums[i - 1] && !use[i - 1]) {
                 continue;
@@ -45,9 +49,6 @@ public class 整理子序列 {
             use[i] = true;
             linkedList.add(nums[i]);
             dfs(i + 1, nums, res, linkedList, use);
-            if (linkedList.size() > 1 ) {
-                res.add(new ArrayList<>(linkedList));
-            }
             linkedList.removeLast();
             use[i] = false;
         }
