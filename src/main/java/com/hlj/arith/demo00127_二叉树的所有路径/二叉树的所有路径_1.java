@@ -44,6 +44,7 @@ public class 二叉树的所有路径_1 {
         linkedList.add(treeNode.val);
         if (treeNode.right == null || treeNode.left == null) {
             res.add(new ArrayList<>(linkedList));
+            return;
         }
         if (treeNode.left != null) {
             dfs(treeNode.left, res, linkedList);

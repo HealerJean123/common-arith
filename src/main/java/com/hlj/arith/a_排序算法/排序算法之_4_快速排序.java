@@ -7,7 +7,7 @@ import org.junit.Test;
  * @Author HealerJean
  * @Date 2018/4/23  下午5:47.
  */
-public class 快速排序 {
+public class 排序算法之_4_快速排序 {
 
 
 
