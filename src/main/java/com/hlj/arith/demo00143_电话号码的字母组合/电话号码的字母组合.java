@@ -1,4 +1,4 @@
-package com.hlj.arith.demo00144_电话号码的字母组合;
+package com.hlj.arith.demo00143_电话号码的字母组合;
 
 import org.junit.Test;
 

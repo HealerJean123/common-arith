@@ -1,4 +1,4 @@
-package com.hlj.arith.demo00141_整理子序列;
+package com.hlj.arith.demo00141_数组中的全部子序列;
 
 
 import org.junit.Test;
@@ -21,7 +21,7 @@ import java.util.List;
 
 解题思路：
 */
-public class 整理子序列 {
+public class 数组中的全部子序列 {
 
     @Test
     public void test(){
@@ -32,25 +32,26 @@ public class 整理子序列 {
     public List<List<Integer>> findSubsequences(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         LinkedList<Integer> linkedList = new LinkedList();
-        boolean[] use = new boolean[nums.length];
-        dfs(0, nums, res, linkedList, use);
+        boolean[] used = new boolean[nums.length];
+        dfs(0, nums, res, linkedList, used);
         return res;
     }
 
-    public void dfs(int index, int[] nums, List<List<Integer>> res, LinkedList<Integer> linkedList, boolean[] use) {
-        if (linkedList.size() > 1 ) {
+    public void dfs(int index, int[] nums, List<List<Integer>> res, LinkedList<Integer> linkedList, boolean[] used) {
+        //每次进来都会放进来，不会retrun,一直到全部进入
+        if (linkedList.size() > 1) {
             res.add(new ArrayList<>(linkedList));
         }
 
         for (int i = index; i < nums.length; i++) {
-            if (i > 0 && nums[i] == nums[i - 1] && !use[i - 1]) {
+            if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
                 continue;
             }
-            use[i] = true;
+            used[i] = true;//下面+1，所以肯定不会有和当前i重复使用
             linkedList.add(nums[i]);
-            dfs(i + 1, nums, res, linkedList, use);
+            dfs(i + 1, nums, res, linkedList, used);
             linkedList.removeLast();
-            use[i] = false;
+            used[i] = false;
         }
     }
 

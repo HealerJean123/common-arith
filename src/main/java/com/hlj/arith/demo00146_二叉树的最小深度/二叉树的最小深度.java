@@ -1,7 +1,5 @@
-package com.hlj.arith.demo00143_二叉树的最小深度;
+package com.hlj.arith.demo00146_二叉树的最小深度;
 
-import com.hlj.arith.demo00128_二叉树的最大路径和.二叉树的最大路径和;
-import com.hlj.arith.z_common.treeNode.TreeNodeResources;
 import org.junit.Test;
 
 /**

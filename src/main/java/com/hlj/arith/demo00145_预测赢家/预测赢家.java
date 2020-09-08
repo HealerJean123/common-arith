@@ -1,9 +1,7 @@
-package com.hlj.arith.demo00146_预测赢家;
+package com.hlj.arith.demo00145_预测赢家;
 
 
 import org.junit.Test;
-
-import java.util.Map;
 
 /**
 作者：HealerJean

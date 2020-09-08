@@ -1,4 +1,4 @@
-package com.hlj.arith.demo00127_二叉树的全路径;
+package com.hlj.arith.demo00127_二叉树的所有路径;
 
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ import java.util.List;
          返回它的最大路径和 [[3,9,15],[3,20,7]]
  解题思路：
  */
-public class 二叉树的全路径 {
+public class 二叉树的所有路径_1 {
 
 
     @Test

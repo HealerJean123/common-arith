@@ -2,7 +2,6 @@ package com.hlj.arith.demo00139_回文子串;
 
 import org.junit.Test;
 
-import java.util.*;
 
 /**
 作者：HealerJean

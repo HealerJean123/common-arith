@@ -50,6 +50,7 @@ public class 戳气球 {
                 //如果长度为len 则 j的位置应该是 i + len - 1 (len是包含 i的哦)
                 int j = i + len - 1;
                 for (int k = i; k <= j; k++) {
+                    //因为 k+
                     // dp[i][k - 1] + dp[k + 1][j] 表示 [i,k - 1] 与 [k + 1, j] 被戳破所获得的最大coins数，
                     //  val[i - 1] * val[k] * val[j + 1] 表示最后戳破第k个气球所获得coins数目。
                     dp[i][j] = Math.max(dp[i][j], dp[i][k - 1] + dp[k + 1][j] + val[i - 1] * val[k] * val[j + 1]);
