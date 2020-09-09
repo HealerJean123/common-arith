@@ -5,8 +5,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author HealerJean
@@ -18,60 +17,31 @@ import java.util.Stack;
 public class TestMain {
 
 
+
     @Test
-    public void test1() {
-        System.out.println("现在的待还额度");
-        Long sum = 920000000L + 2980000000L + 1700000000L + 1400000000L + 4121520000L + 1274000000L + 0L + 305603800L;
-        System.out.println(sum);
+    public void test() {
+        int[] candidates = {2, 3, 6, 7};
+        int target = 7;
+        System.out.println(combinationSum(candidates, target));
     }
 
-    @Test
-    public void test2() {
-
-        Long departLoan =
-+ 920000000L
-+ 2500000000L
-+ 1700000000L
-+ 480000000L
-+ 602000000L
-+ 323000000L
-+ 300000000L
-+ 219000000L
-+ 202000000L
-+ 151000000L
-+ 506000000L
-+ 212000000L
-+305603800L
-+1274000000L
-                ;
-
-
-        System.out.println("departLoan：" +departLoan); //9694603800L
-        Long shengyu =  45000000000L  -25000000000L -departLoan ;
-        System.out.println(shengyu);
-
-
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> res = new ArrayList<>();
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        method(0, candidates, target, res, linkedList);
+        return res;
     }
 
-    @Test
-    public void test3(){
-
-        Long companyLoan =
-920000000L+
-2500000000L+
-1700000000L+
-480000000L+
-602000000L+
-323000000L+
-300000000L+
-219000000L+
-202000000L+
-151000000L+
-506000000L+
-212000000L+
-305603800L+
-1274000000L
-        ;
-        System.out.println(companyLoan); //9694603800
+    public void method(int index, int[] candidates, int target, List<List<Integer>> res,LinkedList<Integer> linkedList ){
+        if (target == 0){
+            res.add(new ArrayList<>(linkedList));
+        }
+        for (int i = index; i < candidates.length; i++) {
+            if (target >= candidates[i]){
+                linkedList.add(candidates[i]);
+                method(i, candidates, target-candidates[i], res, linkedList);
+                linkedList.removeLast();
+            }
+        }
     }
 }
