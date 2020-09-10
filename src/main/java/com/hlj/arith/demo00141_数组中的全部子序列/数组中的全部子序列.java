@@ -44,6 +44,7 @@ public class 数组中的全部子序列 {
         }
 
         for (int i = index; i < nums.length; i++) {
+            //和全排列那里有点像，保证不是同一层在操作
             if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
                 continue;
             }

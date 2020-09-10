@@ -32,7 +32,7 @@ import java.util.*;
 
  * 解题思路：
  */
-public class 组合总和 {
+public class 组合总和_1 {
 
     @Test
     public void test() {
