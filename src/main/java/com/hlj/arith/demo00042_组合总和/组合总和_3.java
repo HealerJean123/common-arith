@@ -1,4 +1,4 @@
-package com.hlj.arith.demo00041_外观数列;
+package com.hlj.arith.demo00042_组合总和;
 
 import org.junit.Test;
 
