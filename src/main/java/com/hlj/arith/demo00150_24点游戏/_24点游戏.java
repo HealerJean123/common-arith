@@ -72,12 +72,11 @@ public class _24点游戏 {
 
     // 第三步：a 是由两个数组成的，b、c 只表示一个数；a 与 b、c 不等价，b、c 等价
     public boolean judge(double a, double b, double c) {
-        // 情况一：a 和 b(c) 组合，a 和 b(c) 不等价，
+        // 情况一：a 和 b(c) 组合，a 和 b(c) 不等价， (不等价的有8中组合方式，其中两种是重复的)
         return judge(a + b, c) ||
                 judge(a - b, c) ||
                 judge(a * b, c) ||
                 judge(a / b, c) ||
-
                 // judge(b + a, c) || 其实和上面是重复的
                 // judge(b * a, c) ||  其实和上面是重复的
                 judge(b - a, c) ||
