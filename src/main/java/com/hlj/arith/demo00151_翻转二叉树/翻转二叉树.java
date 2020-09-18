@@ -35,22 +35,20 @@ public class 翻转二叉树 {
      * 1、我的解法
      */
     public TreeNode invertTree(TreeNode root) {
-        dsf(root);
-        return root;
-    }
-
-    public void dsf(TreeNode root) {
         if (root == null){
-            return ;
+            return null;
         }
         //左右节点交换
         TreeNode temp = root.left ;
         root.left = root.right;
         root.right = temp;
 
-        dsf(root.left);
-        dsf(root.right);
+        invertTree(root.left);
+        invertTree(root.right);
+
+        return root;
     }
+
 
 
     /**

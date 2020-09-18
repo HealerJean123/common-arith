@@ -37,7 +37,7 @@ public class 递增子序列 {
     }
 
     public void dfs(int index, int last, int[] nums, List<List<Integer>> res, LinkedList<Integer> linkedList) {
-        //start 每次都会走到最后
+        //start 每次都会走到最后()
         if (index == nums.length) {
             if (linkedList.size() > 1 ) {
                 res.add(new ArrayList<>(linkedList));
