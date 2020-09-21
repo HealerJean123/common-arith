@@ -28,6 +28,7 @@ public class 二叉树的最小深度 {
     }
 
     public int minDepth(TreeNode root) {
+        //首次进入判断
         if (root == null) {
             return 0;
         }
@@ -36,6 +37,7 @@ public class 二叉树的最小深度 {
             return 1;
         }
 
+        //初始化最小的值，后面还有深度，但是不确定哪个
         int min = Integer.MAX_VALUE;
         if (root.left != null) {
             min = Math.min(minDepth(root.left), min);
