@@ -1,6 +1,7 @@
 package com.hlj.arith.demo00156_把二叉搜索树转换为累加树;
 
-import com.hlj.arith.z_common.treeNode.TreeNodeResources;
+
+import org.junit.Test;
 
 /**
 作者：HealerJean
@@ -16,10 +17,26 @@ import com.hlj.arith.z_common.treeNode.TreeNodeResources;
              /   \
              20     13
 解题思路：
+ 只需要反序中序遍历该二叉搜索树，记录过程中的节点值之和，并不断更新当前遍历到的节点的节点值，即可得到题目要求的累加树。
 */
 public class 把二叉搜索树转换为累加树 {
 
+    @Test
+    public void test(){
+        System.out.println(convertBST(initTreeNode()));
+    }
+
+
+    int sum = 0;
     public TreeNode convertBST(TreeNode root) {
+        if (root != null) {
+            //找到最大的值
+            convertBST(root.right);
+            sum += root.val;
+            root.val = sum;
+            //开始走做节点了
+            convertBST(root.left);
+        }
         return root;
     }
 
