@@ -33,7 +33,9 @@ public class 合并两个有序链表 {
                 prev.next = l2;
                 l2 = l2.next;
             }
-            //下面这个旨在删除 l1 或者l2产生的垃圾，因为下次使用的时候，还是会使用prev.next这样就删除调垃圾了
+            //下面这行可写，可不写，建议写上，这样比较严谨，因为后面会进行替换的
+            prev.next.next = null;
+           //下面这个旨在删除 l1 或者l2产生的垃圾，因为下次使用的时候，还是会使用prev.next这样就删除调垃圾了
             prev = prev.next;
         }
 

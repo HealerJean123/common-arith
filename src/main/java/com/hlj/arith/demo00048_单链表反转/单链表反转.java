@@ -21,10 +21,10 @@ public class 单链表反转 {
     @Test
     public void test(){
         ListNode listNode = listNode();
-        // ListNode newListNode =  reverseList(initListNode);
+        ListNode newListNode =  reverseList(listNode);
         // printListNode(newListNode);
 
-        ListNode newListNode = dgReverseList(listNode);
+        // ListNode newListNode = dgReverseList(listNode);
         printListNode(newListNode);
     }
 

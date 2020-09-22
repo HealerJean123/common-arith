@@ -37,7 +37,7 @@ public class 旋转链表 {
         ListNode listNode = listNode();
         printListNode(listNode);
 
-        listNode = rotateRight(listNode, 1);
+        listNode = rotateRight(listNode, 3);
         printListNode(listNode);
     }
 
@@ -87,7 +87,7 @@ public class 旋转链表 {
         ListNode node  = head.next;
         head.next = null;
 
-        node =  rotateRight(node, k-1);
+        node =  rotateRightMethod(node, k-1);
         return node;
     }
 
@@ -103,11 +103,11 @@ public class 旋转链表 {
 
 
     public ListNode listNode(){
-        ListNode listNode_5 = new ListNode(5, null);
-        ListNode listNode_4 = new ListNode(4, listNode_5);
-        ListNode listNode_3 = new ListNode(2, listNode_4);
-        ListNode listNode_2 = new ListNode(1, listNode_3);
-        ListNode listNode_1 = new ListNode(0, listNode_2);
+        // ListNode listNode_5 = new ListNode(5, null);
+        // ListNode listNode_4 = new ListNode(4, listNode_5);
+        // ListNode listNode_3 = new ListNode(2, listNode_4);
+        // ListNode listNode_2 = new ListNode(1, listNode_3);
+        ListNode listNode_1 = new ListNode(0, null);
         return listNode_1;
     }
     class ListNode{

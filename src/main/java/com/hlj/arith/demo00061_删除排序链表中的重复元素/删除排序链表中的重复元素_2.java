@@ -52,6 +52,7 @@ public class 删除排序链表中的重复元素_2 {
                      count = 1 ;
                  }else {
                      lastNode.next = head;
+                     //必须有这行
                      lastNode.next.next = null;
                      lastNode = lastNode.next;
                  }
@@ -78,8 +79,13 @@ public class 删除排序链表中的重复元素_2 {
 
     public ListNode initListNode(){
         // ListNode listNode_5 = new ListNode(4, null);
-        ListNode listNode_4 = new ListNode(4, null);
-        ListNode listNode_3 = new ListNode(3, listNode_4);
+        // ListNode listNode_4 = new ListNode(4, null);
+        // ListNode listNode_3 = new ListNode(3, listNode_4);
+        // ListNode listNode_2 = new ListNode(2, listNode_3);
+        // ListNode listNode_1 = new ListNode(1, listNode_2);
+
+
+        ListNode listNode_3 = new ListNode(2, null);
         ListNode listNode_2 = new ListNode(2, listNode_3);
         ListNode listNode_1 = new ListNode(1, listNode_2);
         return listNode_1;
