@@ -39,7 +39,7 @@ public class 买卖股票的最佳时机_2 {
             return 0;
         }
 
-        //flag 可以买入：true，可以随时卖出：false
+        //flag 可以重新买入：true，可以随时买入卖出：false
         boolean flag = false ;
         int min = prices[0]; //买入的最低价格
         int res = 0;
@@ -58,7 +58,7 @@ public class 买卖股票的最佳时机_2 {
                     //min肯定会有值，如果可以买入，
                     // 并且买入价格是按照比第二条的价格高或者相等的时候会截至，因为你想相等了还可以买入呀，
                     // 的时候或者是数组最后一个元素的时候，要卖出，否则继续移动i指针
-                    if ((i != prices.length-1) && (prices[i] >= prices[i+1]) || i == prices.length-1){
+                    if ((i != prices.length-1) && (prices[i] > prices[i+1]) || i == prices.length-1){
                         res = res + prices[i] - min;
                         flag = true;
                     }
