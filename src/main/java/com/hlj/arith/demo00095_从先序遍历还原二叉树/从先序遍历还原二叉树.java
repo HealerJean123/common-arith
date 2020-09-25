@@ -33,7 +33,6 @@ public class 从先序遍历还原二叉树 {
 
 
     public TreeNode recoverFromPreorder(String str) {
-        List<Character> ins = Arrays.asList('1', '2', '3', '4', '5', '6', '7', '8', '9', '0');
 
         // 存储必要的节点。
         Stack<TreeNode> stack = new Stack<>();
@@ -48,10 +47,9 @@ public class 从先序遍历还原二叉树 {
                 i++;
             }
 
-
             // 2、获取节点值
             StringBuilder numsStr = new StringBuilder();
-            while (i < str.length() && ins.contains(str.charAt(i))) {
+            while (i < str.length() &&  Character.isDigit(str.charAt(i))) {
                 numsStr.append(str.charAt(i));
                 i++;
             }

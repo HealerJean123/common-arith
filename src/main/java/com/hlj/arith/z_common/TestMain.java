@@ -1,5 +1,6 @@
 package com.hlj.arith.z_common;
 
+import com.hlj.arith.z_common.treeNode.TreeNodeResources;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -18,40 +19,57 @@ public class TestMain {
 
     @Test
     public void test() {
-        int[] candidates = {2, 3, 6, 7};
-        int target = 7;
-        System.out.println(combinationSum(candidates, target));
+        System.out.println(generateParenthesis(3));
+
     }
-    /**
-    * @description
-    * @params
-    * @return
-    * @author  HealerJean
-    * @date    2020/9/15 16:44
-    */
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> res = new ArrayList<>();
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        method(0, candidates, target, res, linkedList);
-        return res;
+
+    public List<String> generateParenthesis(int n) {
+        List<String> res = new ArrayList<>();
+         dsf(n, n , "",  res);
+         return res;
     }
-    /**
-    * @description
-    * @params
-    * @return
-    * @author  HealerJean
-    * @date    2020/9/15 16:49
-    */
-    public void method(int index, int[] candidates, int target, List<List<Integer>> res,LinkedList<Integer> linkedList ){
-        if (target == 0){
-            res.add(new ArrayList<>(linkedList));
+
+    public void dsf(int left , int right, String str,List<String> res){
+        if (left ==0 && right == 0){
+            res.add(str);
         }
-        for (int i = index; i < candidates.length; i++) {
-            if (target >= candidates[i]){
-                linkedList.add(candidates[i]);
-                method(i, candidates, target-candidates[i], res, linkedList);
-                linkedList.removeLast();
-            }
+        if (left > right){
+            return ;
+        }
+
+        if (left > 0){
+            dsf(left-1,right , str+"(",  res);
+        }
+        if(right > 0){
+            dsf(left, right-1, str+")", res);
+        }
+
+    }
+
+    public TreeNode initTreeNode() {
+        TreeNode treeNode1 = new TreeNode(3, null, null);
+        TreeNode treeNode2 = new TreeNode(6, null, null);
+        TreeNode treeNode3 = new TreeNode(4, treeNode1, treeNode2);
+        TreeNode treeNode4 = new TreeNode(1, null, null);
+        TreeNode root = new TreeNode(5, treeNode3, treeNode4);
+        return root;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+
+        TreeNode(int x, TreeNode left, TreeNode right) {
+            this.val = x;
+            this.left = left;
+            this.right = right;
+
         }
     }
+
 }
