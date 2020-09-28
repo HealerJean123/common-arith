@@ -73,12 +73,9 @@ public class 填充每个节点的下一个右侧节点指针_1 {
             right.next = root.next.left;
         }
 
-        if (left != null) {
-            connect(left);
-        }
-        if (right != null) {
-            connect(right);
-        }
+        //不会执行到最后一行的
+        connect(left);
+        connect(right);
         return root;
     }
 
