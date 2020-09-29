@@ -3,9 +3,7 @@ package com.hlj.arith.z_common.treeNode;
 import com.hlj.arith.demo00107_将有序数组转换为二叉搜索树.将有序数组转换为二叉搜索树;
 import org.junit.Test;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @author HealerJean
@@ -18,37 +16,12 @@ public class TreeNodeResources {
 
 
 
+    @Test
+    public void test(){
 
-
-
-
-
-
-
-
-
-
-    public  void collect(TreeNode root, LinkedList<Integer> linkedList) {
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            //表示每行有多少个
-            int hangSize = queue.size();
-            //遍历每行的数据
-            while (hangSize > 0) {
-                //从队列中取出，打印根节点
-                TreeNode node  = queue.remove();
-                hangSize--;
-                if (node == null){
-                    linkedList.add(null);
-                }else {
-                    linkedList.add(node.val);
-                    queue.add(node.left);
-                    queue.add(node.right);
-                }
-            }
-        }
     }
+
+
 
 
     public TreeNode initTreeNode(){
