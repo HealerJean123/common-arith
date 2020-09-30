@@ -31,7 +31,7 @@ public class 构建二叉搜索树 {
         TreeNode root = new TreeNode(array[0]);
         for (int i = 1 ; i < array.length ; i++){
             TreeNode curNode = root;
-            while (true){
+            while (curNode != null){
                 //Tree
                 if (array[i] >  curNode.val){
                     if (curNode.right == null){

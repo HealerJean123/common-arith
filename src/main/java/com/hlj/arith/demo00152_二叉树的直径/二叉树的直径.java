@@ -38,7 +38,7 @@ public class 二叉树的直径 {
         int left = dfs(root.left);
         int right = dfs(root.right);
         //获取该节点的最大深度也就是，也就是最大的值，因为肯定是从一个顶点出发的
-        res = Math.max(res,left + right);
+        res = Math.max(res,  left + right);
 
         //返回深度
         return Math.max(left,right) + 1;
