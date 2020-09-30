@@ -37,7 +37,7 @@ public class 二叉树中的最大路径和 {
         max = Math.max(max, node.val + left + right);
 
         // 返回节点的最大贡献值
-        return node.val + Math.max(left, right);
+        return  Math.max(left, right) + node.val ;
     }
 
 
