@@ -26,7 +26,6 @@ public class 二叉搜索树的最小绝对差 {
 
     int pre = -1;
     int res = Integer.MAX_VALUE;
-
     public int getMinimumDifference(TreeNode root) {
         dfs(root);
         return res;
