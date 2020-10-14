@@ -36,8 +36,7 @@ public class 查找常用字符 {
             int[] freq = new int[26];
             //遍历每个字符串保存到频率数组中
             for (int i = 0; i < str.length(); i++) {
-                char ch = str.charAt(i);
-                freq[ch - 'a'] ++;
+                freq[str.charAt(i) - 'a'] ++;
             }
 
             //每次执行一个字符串就重新将外面的结果频率数组进行替换，保证结果是最小的频率
