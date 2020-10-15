@@ -2,6 +2,9 @@ package com.hlj.arith.demo00172_环形链表;
 
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
 作者：HealerJean
 题目：
@@ -31,9 +34,28 @@ public class 环形链表_1 {
     @Test
     public void test(){
         System.out.println(hasCycle(listNode()));
+        System.out.println(hasCycle2(listNode()));
     }
 
+    /**
+     * 方法1：使用集合不推荐
+     */
     public boolean hasCycle(ListNode head) {
+        Set<ListNode> seen = new HashSet<ListNode>();
+        while (head != null) {
+            if (!seen.add(head)) {
+                return true;
+            }
+            head = head.next;
+        }
+        return false;
+    }
+
+
+    /**
+     * 方法2：推荐
+     */
+    public boolean hasCycle2(ListNode head) {
         if (head == null || head.next == null) {
             return false;
         }

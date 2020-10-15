@@ -2,6 +2,9 @@ package com.hlj.arith.demo00172_环形链表;
 
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
 作者：HealerJean
 题目：
@@ -29,13 +32,69 @@ public class 环形链表_2 {
 
 
     @Test
-    // public void test(){
-    //     System.out.println(detectCycle(listNode()));
-    // }
+    public void test(){
+        System.out.println(detectCycle(listNode()));
+        System.out.println(detectCycle2(listNode()));
+    }
 
-    // public ListNode detectCycle(ListNode head) {
-    //
-    // }
+    /**
+     * 方法1 Hash表
+     */
+    public ListNode detectCycle(ListNode head) {
+        ListNode pos = head;
+        Set<ListNode> visited = new HashSet<ListNode>();
+        while (pos != null) {
+            if (visited.contains(pos)) {
+                return pos;
+            } else {
+                visited.add(pos);
+            }
+            pos = pos.next;
+        }
+        return null;
+    }
+
+
+
+    /**
+     * 方法2 快慢指针
+     */
+    public ListNode detectCycle2(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        // 快慢指针都从头节点开始
+        ListNode slow = head;
+        ListNode fast = head;
+
+        //当快的指针不为null的时候继续，如果fast为空，说明跑完了
+        while (fast != null) {
+
+            //开始的时候就跑起来
+            //慢指针移动1步
+            slow = slow.next;
+
+            //fast指针抢跑2步
+            if (fast.next != null) {
+                fast = fast.next.next;
+            } else {
+                return null;
+            }
+
+            //这个地方就牛了，具体看解析，真的很牛
+            //如果快慢指针相等的话就表示有环了，需要返回
+            if (fast == slow) {
+                ListNode ptr = head;
+                while (ptr != slow) {
+                    ptr = ptr.next;
+                    slow = slow.next;
+                }
+                return ptr;
+            }
+        }
+        return null;
+    }
+
 
 
     public ListNode listNode(){
