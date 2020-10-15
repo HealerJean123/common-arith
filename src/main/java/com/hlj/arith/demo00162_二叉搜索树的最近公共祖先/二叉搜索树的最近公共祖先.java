@@ -1,6 +1,5 @@
 package com.hlj.arith.demo00162_二叉搜索树的最近公共祖先;
 
-import com.hlj.arith.z_common.treeNode.TreeNodeResources;
 import org.junit.Test;
 
 /**

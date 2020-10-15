@@ -50,7 +50,7 @@ public class 子集_3 {
     public void dsf(int index, int[]  nums,List<List<Integer>> res, LinkedList<Integer> linkedList,  boolean[] used){
         res.add(new ArrayList<>(linkedList));
         for (int i = index; i < nums.length; i++) {
-            if (i > index && nums[i] == nums[i-1] && !used[i-1]){
+            if (i > 0 && nums[i] == nums[i-1] && !used[i-1]){
                 continue;
             }
             linkedList.add(nums[i]);

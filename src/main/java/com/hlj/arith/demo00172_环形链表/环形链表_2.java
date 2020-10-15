@@ -29,13 +29,13 @@ public class 环形链表_2 {
 
 
     @Test
-    public void test(){
-        System.out.println(detectCycle(listNode()));
-    }
+    // public void test(){
+    //     System.out.println(detectCycle(listNode()));
+    // }
 
-    public ListNode detectCycle(ListNode head) {
-
-    }
+    // public ListNode detectCycle(ListNode head) {
+    //
+    // }
 
 
     public ListNode listNode(){
