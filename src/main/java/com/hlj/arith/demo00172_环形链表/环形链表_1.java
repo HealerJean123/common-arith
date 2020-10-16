@@ -41,7 +41,7 @@ public class 环形链表_1 {
      * 方法1：使用集合不推荐
      */
     public boolean hasCycle(ListNode head) {
-        Set<ListNode> seen = new HashSet<ListNode>();
+        Set<ListNode> seen = new HashSet<>();
         while (head != null) {
             if (!seen.add(head)) {
                 return true;
