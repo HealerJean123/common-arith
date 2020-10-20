@@ -45,9 +45,10 @@ public class 有序数组的平方 {
         int[] res = new int[A.length];
 
         //因为不能确定原始数组的负数的绝对值和正数最大值的绝对值，所以我们先保存大的值，也就是从后往前添加
-        int index = A.length - 1 ;
-        int right = A.length - 1 ;
-        for (int left = 0 ; left <= right;) {
+        int index = A.length - 1;
+        int right = A.length - 1;
+        int left = 0;
+        while (left <= right){
             if (A[left] * A[left] > A[right] * A[right]) {
                 res[index] = A[left] * A[left];
                 left++;
@@ -55,9 +56,9 @@ public class 有序数组的平方 {
                 res[index] = A[right] * A[right];
                 right--;
             }
-            //每次放入东西index要减去
-            index--;
         }
+        //每次放入东西index要减去
+        index--;
         return res;
     }
 

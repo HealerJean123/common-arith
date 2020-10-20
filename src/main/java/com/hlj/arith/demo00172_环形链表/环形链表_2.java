@@ -42,7 +42,7 @@ public class 环形链表_2 {
      */
     public ListNode detectCycle(ListNode head) {
         ListNode pos = head;
-        Set<ListNode> visited = new HashSet<ListNode>();
+        Set<ListNode> visited = new HashSet<>();
         while (pos != null) {
             if (visited.contains(pos)) {
                 return pos;

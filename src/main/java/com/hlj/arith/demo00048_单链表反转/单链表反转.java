@@ -71,15 +71,17 @@ public class 单链表反转 {
         ListNode listNode_1 = new ListNode(1, listNode_2);
         return listNode_1;
     }
+
+    class ListNode{
+        int value ;
+        ListNode next ;
+
+        public ListNode(int value, ListNode next) {
+            this.value = value;
+            this.next = next;
+        }
+    }
 }
 
-  class ListNode{
-     int value ;
-     ListNode next ;
 
-      public ListNode(int value, ListNode next) {
-          this.value = value;
-          this.next = next;
-      }
-  }
 
