@@ -1,7 +1,6 @@
 @Test
     public void test(){
-        String str = listNodeStr(listNode(),"");
-        System.out.println(str);
+
     }
 
     public ListNode listNode(){

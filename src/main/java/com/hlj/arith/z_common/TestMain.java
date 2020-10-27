@@ -16,33 +16,53 @@ import java.util.*;
 @Slf4j
 public class TestMain {
 
+
     @Test
     public void test(){
-        int[] nums = {2,0,2,1,1,0};
-        sortColors(nums);
-        System.out.println( Arrays.toString(nums));
+
     }
 
 
-    public void sortColors(int[] nums) {
-        int i = 0 ;
-        int j = nums.length-1;
-        int index = 0 ;
-        while (index <= j){
-            if (nums[index] == 0){
-                int temp = nums[index];
-                nums[index] = nums[i];
-                nums[i] = temp;
-                i++ ;
-                index ++;
-            }else  if(nums[index] == 2){
-                int temp = nums[index];
-                nums[index] = nums[j];
-                nums[j] = temp;
-                j--;
+    public List<Integer> preorderTraversal(TreeNode root) {
+
+        List<Integer> res = new ArrayList<>();
+
+        Stack<TreeNode> stack = new Stack<>();
+        while (!stack.isEmpty()  || root != null){
+            if (root != null){
+                res.add(root.val);
+                stack.push(root);
+                root = root.left;
             }else {
-                index ++;
+                TreeNode node = stack.pop();
+                root = node.right ;
             }
+        }
+        return res ;
+    }
+
+    public TreeNode initTreeNode(){
+        TreeNode treeNode1 = new TreeNode(3, null ,null);
+        TreeNode treeNode2 = new TreeNode(6, null , null);
+        TreeNode treeNode3 = new TreeNode(4, treeNode1, treeNode2);
+        TreeNode treeNode4 = new TreeNode(1, null, null);
+        TreeNode root = new TreeNode(5, treeNode3, treeNode4);
+        return root ;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+        TreeNode(int x, TreeNode left, TreeNode right) {
+            this.val = x;
+            this.left = left;
+            this.right = right;
+
         }
     }
 

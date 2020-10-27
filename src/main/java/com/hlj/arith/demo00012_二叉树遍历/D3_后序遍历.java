@@ -1,6 +1,5 @@
 package com.hlj.arith.demo00012_二叉树遍历;
 
-import lombok.Data;
 import org.junit.Test;
 
 public class D3_后序遍历 {
@@ -8,7 +7,7 @@ public class D3_后序遍历 {
     @Test
     public void test() {
         System.out.println("后序遍历");
-        Node node = init();
+        TreeNode node = initTreeNode();
         postOrder(node);
     }
 
@@ -16,58 +15,49 @@ public class D3_后序遍历 {
      *
      * 后续遍历(左右根) ：递归
      */
-    public static void postOrder(Node root) {
+    public static void postOrder(TreeNode root) {
 
-        if (root.getLeftNode() != null) {
-            postOrder(root.getLeftNode());
+        if (root.left != null) {
+            postOrder(root.left);
         }
-        if (root.getRightNode() != null) {
-            postOrder(root.getRightNode());
+        if (root.right != null) {
+            postOrder(root.right);
         }
-        printNode(root);
+
+        System.out.println(root.val);
     }
 
 
 
-
-
-
-    /**
-     * 打印节点数值
-     */
-    public static void printNode(Node node) {
-        System.out.print(node.getData()+ " ");
-    }
 
     /**
      * 初始化二叉树：
      * 必须逆序简历，先建立子节点，再逆序往上建立，因为非叶子节点会使用到下面的节点，而初始化是按顺序初始化得，不逆序建立会报错
      */
-    public static Node init() {
-        Node H = new Node("H", null, null);
-        Node K = new Node("K", null, null);
-        Node G = new Node("G", H, K);
-        Node F = new Node("F", G, null);
-        Node E = new Node("E", null, F);
-        Node D = new Node("D", null, null);
-        Node C = new Node("C", D, null);
-        Node B = new Node("B", null, C);
-        Node A = new Node("A", B, E);
-        return A;
+
+    public TreeNode initTreeNode(){
+        TreeNode treeNode1 = new TreeNode(3, null ,null);
+        TreeNode treeNode2 = new TreeNode(6, null , null);
+        TreeNode treeNode3 = new TreeNode(4, treeNode1, treeNode2);
+        TreeNode treeNode4 = new TreeNode(1, null, null);
+        TreeNode root = new TreeNode(5, treeNode3, treeNode4);
+        return root ;
     }
 
-    @Data
-    public static class Node {
-        private String data;
-        private Node leftNode;
-        private Node rightNode;
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
 
-        public Node(String data, Node leftNode, Node rightNode) {
-            this.data = data;
-            this.leftNode = leftNode;
-            this.rightNode = rightNode;
+        TreeNode(int x) {
+            val = x;
         }
+        TreeNode(int x, TreeNode left, TreeNode right) {
+            this.val = x;
+            this.left = left;
+            this.right = right;
 
+        }
     }
 
 }
