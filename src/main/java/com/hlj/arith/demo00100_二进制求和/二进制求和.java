@@ -33,9 +33,9 @@ public class 二进制求和 {
         int temp = 0;
         StringBuilder stringBuilder = new StringBuilder();
         while (aIdx >= 0 && bIdx >= 0) {
-            Integer aVal = Integer.valueOf(String.valueOf( a.charAt(aIdx)));
-            Integer bVal = Integer.valueOf(String.valueOf( b.charAt(bIdx)));
-            Integer temVal = aVal + bVal + temp;
+            int aVal = a.charAt(aIdx) - '0';
+            int bVal =  b.charAt(bIdx)- '0';
+            int temVal = aVal + bVal + temp;
 
             int pop = temVal % 2;
             stringBuilder.append(pop) ;

@@ -28,8 +28,8 @@ public class 字符串相加 {
         int j = num2.length() - 1;
         int t = 0;
         while (j >= 0 || i >= 0 || t > 0) {
-            int pre = i < 0 ? 0 : Integer.valueOf(String.valueOf(num1.charAt(i--)));
-            int post = j < 0 ? 0 : Integer.valueOf(String.valueOf(num2.charAt(j--)));
+            int pre = i < 0 ? 0 : num1.charAt(i--) - '0';
+            int post = j < 0 ? 0 : num2.charAt(j--) - '0';
             int sum = pre + post + t;
             t = sum / 10;
             append.append(sum % 10);
