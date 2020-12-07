@@ -50,7 +50,6 @@ public class 两个数组的交集_2 {
      * 排序，移动指针，有点像合并有序数组
      */
     public int[] intersect(int[] nums1, int[] nums2) {
-
         Arrays.sort(nums1);
         Arrays.sort(nums2);
         int i = 0 , j = 0 ;
