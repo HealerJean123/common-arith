@@ -50,7 +50,9 @@ public class 排序算法之_4_快速排序 {
 
                 //通过上面的while，如果还满足i < j ，则肯定是po >= nums[j]
                 if (i < j) {
-                    swap(nums, i, j);
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
                     i++;
                 }
 
@@ -61,7 +63,9 @@ public class 排序算法之_4_快速排序 {
                 }
 
                 if (i < j) {
-                    swap(nums, i, j);
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
                     j--;
                 }
             }
@@ -75,11 +79,6 @@ public class 排序算法之_4_快速排序 {
     }
 
 
-    public void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
 
 
 

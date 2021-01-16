@@ -26,16 +26,36 @@ public class 排序算法之_1_冒泡排序 {
             //j，当前位置指针 j最大不能超过 str.length - i
             for (int j = 0; j < nums.length - i; j++) {
                 if (nums[j] > nums[j + 1]) {
-                    swap(nums, j, j + 1);
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
                 }
             }
         }
     }
 
-    public void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
+
+    public void 冒泡排序优化(int[] nums) {
+        // i=> 排序次数（最多做n-1趟排序）
+        for (int i = 1; i < nums.length; i++) {
+            //是否发生交换
+            boolean flag = false;
+            //j，当前位置指针 j最大不能超过 str.length - i
+            for (int j = 0; j < nums.length - i; j++) {
+                if (nums[j] > nums[j + 1]) {
+                    flag = true;
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+                }
+            }
+
+            //当一趟比较没有发送交换的时间表示已经有序
+            if (!flag) {
+                break;
+            }
+        }
     }
+
 
 }

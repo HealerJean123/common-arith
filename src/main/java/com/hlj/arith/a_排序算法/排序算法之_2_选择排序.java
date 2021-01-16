@@ -16,8 +16,6 @@ import java.util.Arrays;
 public class 排序算法之_2_选择排序 {
 
 
-
-
     @Test
     public void test(){
         int[] nums = {49, 38, 65, 97, 76, 13, 27, 50};
@@ -27,30 +25,26 @@ public class 排序算法之_2_选择排序 {
 
 
     public void 选择排序(int[] nums) {
-        int tId;
         //从前往后比较，从0开始，是因为它要赋值给min,i一直到a.length 也就是最后一个还需要往前移动
         for (int i = 0; i < nums.length - 1; i++) {
             //首先默认第一个为最小值
-            tId = i;
+            int idx = i;
             //是和tId比较 ，不需要自己跟自己比较，min初始给的i，所以j=i+1;
             for (int j = i + 1; j < nums.length; j++) {
-                if (nums[tId] > nums[j]) {
-                    tId = j;
+                if (nums[idx] > nums[j]) {
+                    idx = j;
                 }
             }
 
             //每趟排序之后，idex的值都会不一样 ,而每次的min都是开始的i，所以当下的i和min进行替换
-            if (tId != i) {
-                swap(nums, i, tId);
+            if (idx != i) {
+                int temp = nums[i];
+                nums[i] = nums[idx];
+                nums[idx] = temp;
             }
         }
     }
 
-    public void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
 
 
 }

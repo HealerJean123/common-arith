@@ -19,27 +19,26 @@ public class TestMain {
 
     @Test
     public void test(){
-
+        int[] nums1 ={};
+        int[] nums2 = {1,1};
+        System.out.println(Arrays.toString(intersection(nums1, nums2)));
     }
 
+    public int[] intersection(int[] nums1, int[] nums2) {
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums1.length; i++) {
+            set.add(nums1[i]);
+        }
 
-    public List<Integer> preorderTraversal(TreeNode root) {
-
-        List<Integer> res = new ArrayList<>();
-
-        Stack<TreeNode> stack = new Stack<>();
-        while (!stack.isEmpty()  || root != null){
-            if (root != null){
-                res.add(root.val);
-                stack.push(root);
-                root = root.left;
-            }else {
-                TreeNode node = stack.pop();
-                root = node.right ;
+        Set<Integer> resSet = new HashSet<>();
+        for (int i = 0; i < nums2.length; i++) {
+            if (set.contains(nums2[i])){
+                resSet.add(nums2[i]);
             }
         }
-        return res ;
+        return resSet.stream().mapToInt(Integer::intValue).toArray();
     }
+
 
     public TreeNode initTreeNode(){
         TreeNode treeNode1 = new TreeNode(3, null ,null);

@@ -34,14 +34,15 @@ public class 两个数组的交集_2 {
      */
     public int[] intersect1(int[] nums1, int[] nums2) {
         List<Integer> list = Arrays.stream(nums1).mapToObj(Integer::new).collect(Collectors.toList());
-        List<Integer> resList = new ArrayList<>();
+        int idx = 0 ;
+        int[] res = new int[nums1.length + nums1.length];
         for (int num : nums2){
             if (list.contains(num)){
                 list.remove((Integer)num);
-                resList.add(num);
+                res[idx++] = num;
             }
         }
-        return resList.stream().mapToInt(Integer::intValue).toArray();
+        return Arrays.copyOfRange(res, 0, idx);
     }
 
 
@@ -49,25 +50,24 @@ public class 两个数组的交集_2 {
      * 排序，移动指针，有点像合并有序数组
      */
     public int[] intersect(int[] nums1, int[] nums2) {
-
         Arrays.sort(nums1);
         Arrays.sort(nums2);
         int i = 0 , j = 0 ;
-        int count = 0 ;
+        int idx = 0 ;
         int[] res = new int[nums1.length + nums1.length];
         while (i < nums1.length && j < nums2.length){
             if (nums1[i] == nums2[j]){
-                res[count] = nums1[i];
+                res[idx] = nums1[i];
                 i++ ;
                 j++ ;
-                count++;
+                idx++;
             }else if (nums1[i] < nums2[j]){
                 i++;
             }else {
                 j++;
             }
         }
-        return Arrays.copyOfRange(res, 0, count);
+        return Arrays.copyOfRange(res, 0, idx);
     }
 
 
